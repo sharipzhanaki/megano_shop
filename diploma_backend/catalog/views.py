@@ -31,10 +31,26 @@ class ProductFilter(filters.FilterSet):
         fields = ["name", "category", "minPrice", "maxPrice", "freeDelivery", "available", "tags"]
 
 
+class CategoryViewSet(ReadOnlyModelViewSet):
+    """
+    GET /api/categories — верхние категории с подкатегориями
+    """
+    serializer_class = CatalogItemSerializer
+    pagination_class = None
+    http_method_names = ["get"]
+
+    def get_queryset(self):
+        return (
+            Category.objects
+            .filter(parent__isnull=True)
+            .only("id", "title", "image_src", "image_alt")
+            .prefetch_related("subcategories")
+        )
+
+
 class CatalogViewSet(ReadOnlyModelViewSet):
     """
     /catalog - список товаров с фильтрацией, сортировкой, пагинацией
-    /categories
     /products/popular
     /products/limited
     /sales
@@ -62,11 +78,11 @@ class CatalogViewSet(ReadOnlyModelViewSet):
     def list(self, request, *args, **kwargs):
         sort = request.query_params.get("sort", "date")
         sort_type = request.query_params.get("sortType", "dec")
-        queryset = self.filter_queryset(self.get_queryset().annotate(reviews=Count("reviews")))
+        queryset = self.filter_queryset(self.get_queryset().annotate(reviews_count=Count("reviews")))
         field_map = {
             "rating": "rating",
             "price": "price",
-            "reviews": "reviews",
+            "reviews": "reviews_count",
             "date": "date"
         }
         order_field = field_map.get(sort, "date")
@@ -80,16 +96,6 @@ class CatalogViewSet(ReadOnlyModelViewSet):
             serializer = self.get_serializer(page, many=True)
             return self.get_paginated_response(serializer.data)
         return Response(self.get_serializer(queryset, many=True).data)
-
-    @action(detail=False, methods=["get"], url_path="categories")
-    def categories(self, request):
-        queryset = (
-            Category.objects
-            .filter(parent__isnull=True)
-            .only("id", "title", "images")
-            .prefetch_related("subcategories")
-        )
-        return Response(CatalogItemSerializer(queryset, many=True).data)
 
     @action(detail=False, methods=["get"], url_path="products/popular")
     def popular(self, request):
