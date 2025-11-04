@@ -1,5 +1,6 @@
 from django.db.models import Count, Prefetch
 from django_filters import rest_framework as filters
+from django.utils.timezone import now
 from rest_framework.viewsets import ReadOnlyModelViewSet
 from rest_framework.response import Response
 from rest_framework.decorators import action
@@ -102,8 +103,8 @@ class CatalogViewSet(ReadOnlyModelViewSet):
         """GET /products/popular - топ товаров по рейтингу/отзывам"""
         queryset = (
             self.get_queryset()
-            .annotate(reviews=Count("reviews"))
-            .order_by("-rating", "-reviews")
+            .annotate(reviews_count=Count("reviews"))
+            .order_by("-rating", "-reviews_count")
         )
         page = self.paginate_queryset(queryset)
         if page is not None:
@@ -121,16 +122,6 @@ class CatalogViewSet(ReadOnlyModelViewSet):
             return self.get_paginated_response(serializer.data)
         return Response(self.get_serializer(queryset, many=True).data)
 
-    @action(detail=False, methods=["get"], url_path="sales")
-    def sales(self, request):
-        """GET /sales - товары, участвующие в акциях"""
-        queryset = ProductSale.objects.select_related("product").prefetch_related(
-            Prefetch("product__images"),
-            Prefetch("product__tags"),
-        )
-        serializer = ProductSaleSerializer(queryset, many=True)
-        return Response(serializer.data)
-
     @action(detail=False, methods=["get"], url_path="banners")
     def banners(self, request):
         """GET /banners - товары с тегом 'banner'"""
@@ -141,6 +132,23 @@ class CatalogViewSet(ReadOnlyModelViewSet):
             .order_by("-date")
         )
         return Response(self.get_serializer(queryset, many=True).data)
+
+
+class ProductSalesViewSet(ReadOnlyModelViewSet):
+    """
+    /sales - товары, участвующие в акциях
+    """
+    serializer_class = ProductSaleSerializer
+    pagination_class = None
+
+    def get_queryset(self):
+        today = now().date()
+        return (
+            ProductSale.objects
+            .filter(date_from__lte=today, date_to__gte=today)
+            .select_related("product")
+            .prefetch_related("product__images", "products__tags")
+        )
 
 
 class ProductDetailViewSet(ReadOnlyModelViewSet):
