@@ -2,7 +2,7 @@ from django.contrib import admin
 
 from .models import (
     Category, Product, ProductImage,
-    ProductSpecification, ProductSale, Review, Tag
+    ProductSpecification, Sale, Review, Tag
 )
 
 class ProductImageInline(admin.TabularInline):
@@ -27,7 +27,7 @@ class ReviewInline(admin.TabularInline):
 
 class ProductSaleInline(admin.TabularInline):
     """Вкладка для акций"""
-    model = ProductSale
+    model = Sale
     extra = 0
 
 
@@ -82,7 +82,7 @@ class ReviewAdmin(admin.ModelAdmin):
     readonly_fields = ("date",)
 
 
-@admin.register(ProductSale)
+@admin.register(Sale)
 class ProductSaleAdmin(admin.ModelAdmin):
     """Акции"""
     list_display = ("id", "product", "sale_price", "date_from", "date_to")

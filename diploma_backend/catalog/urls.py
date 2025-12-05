@@ -1,17 +1,19 @@
-from django.urls import path, include
-from rest_framework.routers import SimpleRouter
+from django.urls import path
 from .views import (
-    CategoryViewSet, CatalogViewSet, ProductDetailViewSet, TagViewSet, ProductSalesViewSet
+    CategoriesListAPIView, CatalogListAPIView, PopularProductsAPIView,
+    LimitedProductsAPIView, BannerListAPIView, SalesListAPIView,
+    ProductDetailAPIView, AddReviewAPIView, TagListAPIView
 )
 
-router = SimpleRouter()
-router.register(r"categories", CategoryViewSet, basename="categories")
-router.register(r"catalog", CatalogViewSet, basename="catalog")
-router.register(r"product", ProductDetailViewSet, basename="product")
-router.register(r"tags", TagViewSet, basename="tags")
-router.register(r"sales", ProductSalesViewSet, basename="sales")
 
 urlpatterns = [
-    path("", include(router.urls)),
-    path("banners/", CatalogViewSet.as_view({"get": "banners"}), name="banners"),
+    path("categories/", CategoriesListAPIView.as_view(), name="categories"),
+    path("catalog/", CatalogListAPIView.as_view(), name="catalog"),
+    path("products/popular/", PopularProductsAPIView.as_view(), name="products_popular"),
+    path("products/limited/", LimitedProductsAPIView.as_view(), name="products_limited"),
+    path("banners/", BannerListAPIView.as_view(), name="banners"),
+    path("sales/", SalesListAPIView.as_view(), name="sales"),
+    path("product/<int:id>/", ProductDetailAPIView.as_view(), name="product_detail"),
+    path("product/<int:id>/reviews", AddReviewAPIView.as_view(), name="product_review"),
+    path("tags/", TagListAPIView.as_view(), name="tags"),
 ]
