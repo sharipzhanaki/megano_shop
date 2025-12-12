@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'drf_spectacular_sidecar',
 
     'catalog',
+    'profile_user',
 ]
 
 MIDDLEWARE = [
