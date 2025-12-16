@@ -2,6 +2,7 @@ asgiref==3.9.2
 attrs==25.4.0
 diploma-frontend @ file:///Users/aknursaripzan/PycharmProjects/python_django_diploma/diploma-frontend/dist/diploma-frontend-0.6.tar.gz#sha256=3a6b1203724b256946919b4d65b362b005ae6a9e1e93d8d765e96aa6a92764ac
 Django==5.2.6
+django-cleanup==9.0.0
 django-filter==25.2
 djangorestframework==3.16.1
 drf-spectacular==0.28.0
