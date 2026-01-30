@@ -10,6 +10,7 @@ from rest_framework.response import Response
 
 from .models import Profile
 from .serializers import UserSerializer
+from orders.utils import sync_session_basket_to_db
 
 
 class SignUpAPIView(APIView):
@@ -31,6 +32,7 @@ class SignUpAPIView(APIView):
         user.save()
         Profile.objects.create(user=user)
         login(request, user)
+        sync_session_basket_to_db(request)
         return Response(status=200)
 
 
@@ -43,6 +45,7 @@ class SignInAPIView(APIView):
         user = authenticate(request=request, username=username, password=password)
         if user is not None:
             login(request, user)
+            sync_session_basket_to_db(request)
             return Response(status=200)
         else:
             return Response(status=500)
