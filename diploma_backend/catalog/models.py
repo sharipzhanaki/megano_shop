@@ -1,8 +1,12 @@
 from django.db import models
 
 
-def category_images_directory_path(instance, filename: str) -> str:
+def category_images_directory_path(instance: "Category", filename: str) -> str:
     return f"categories/category_{instance.pk}/images/{filename}"
+
+
+def subcategory_images_directory_path(instance: "Subcategory", filename: str) -> str:
+    return f"subcategories/category_{instance.pk}/images/{filename}"
 
 
 def product_images_directory_path(instance: "ProductImage", filename: str) -> str:
@@ -15,10 +19,23 @@ class Category(models.Model):
         verbose_name_plural = "Categories"
 
     title = models.CharField(max_length=255)
-    parent = models.ForeignKey(
-        "self", null=True, blank=True, related_name="subcategories", on_delete=models.CASCADE
-    )
     image = models.ImageField(upload_to=category_images_directory_path, blank=True, null=True)
+    image_alt = models.CharField(max_length=255, blank=True, null=True)
+
+    def __str__(self):
+        return self.title
+
+
+class Subcategory(models.Model):
+    class Meta:
+        verbose_name = "Subcategory"
+        verbose_name_plural = "Subcategories"
+
+    title = models.CharField(max_length=255)
+    category = models.ForeignKey(
+        Category, on_delete=models.CASCADE, related_name="subcategories", null=True, blank=True
+    )
+    image = models.ImageField(upload_to=subcategory_images_directory_path, blank=True, null=True)
     image_alt = models.CharField(max_length=255, blank=True, null=True)
 
     def __str__(self):
@@ -41,7 +58,7 @@ class Product(models.Model):
         verbose_name = "Product"
         verbose_name_plural = "Products"
 
-    category = models.ForeignKey(Category, on_delete=models.PROTECT, related_name="products")
+    subcategory = models.ForeignKey(Subcategory, on_delete=models.PROTECT, related_name="products")
     title = models.CharField(max_length=255)
     description = models.TextField(blank=True)
     full_description = models.TextField(blank=True)

@@ -1,8 +1,8 @@
 from rest_framework import serializers
 
 from .models import (
-    Category, Product, ProductImage, Tag,
-    ProductSpecification, Review, Sale
+    Category, Subcategory, Product, ProductImage,
+    Tag, ProductSpecification, Review, Sale
 )
 
 
@@ -66,6 +66,8 @@ class ProductShortSerializer(serializers.ModelSerializer):
     tags = TagSerializer(many=True)
     rating = serializers.FloatField()
     reviews = serializers.IntegerField(source="reviews_count", read_only=True)
+    category = serializers.IntegerField(source="subcategory.id", read_only=True)
+    price = serializers.SerializerMethodField()
 
     class Meta:
         model = Product
@@ -73,6 +75,12 @@ class ProductShortSerializer(serializers.ModelSerializer):
             "id", "category", "price", "count", "date", "title", "description",
             "freeDelivery", "images", "tags", "reviews", "rating"
         )
+
+    def get_price(self, obj):
+        sale_price = obj.sales.first()
+        if sale_price:
+            obj.price = sale_price.sale_price
+        return obj.price
 
 
 class ProductFullSerializer(serializers.ModelSerializer):
@@ -82,7 +90,8 @@ class ProductFullSerializer(serializers.ModelSerializer):
     tags = TagSerializer(many=True)
     reviews = ReviewSerializer(many=True)
     specifications = ProductSpecificationSerializer(many=True)
-    category = serializers.IntegerField(source="category.id")
+    category = serializers.IntegerField(source="subcategory.id", read_only=True)
+    price = serializers.SerializerMethodField()
 
     class Meta:
         model = Product
@@ -91,6 +100,12 @@ class ProductFullSerializer(serializers.ModelSerializer):
             "description", "fullDescription", "freeDelivery", "images",
             "tags", "reviews", "specifications", "rating"
         )
+
+    def get_price(self, obj):
+        sale_price = obj.sales.first()
+        if sale_price:
+            obj.price = sale_price.sale_price
+        return obj.price
 
 
 class CategoryImageSerializer(serializers.Serializer):
@@ -113,7 +128,7 @@ class SubCategorySerializer(serializers.ModelSerializer):
     image = CategoryImageSerializer(source="*", read_only=True)
 
     class Meta:
-        model = Category
+        model = Subcategory
         fields = ("id", "title", "image")
 
 

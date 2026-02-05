@@ -1,0 +1,106 @@
+[
+{
+  "model": "profile_user.profile",
+  "pk": 1,
+  "fields": {
+    "user": [
+      "frank_ocean"
+    ],
+    "full_name": "Ocean Frank",
+    "email": "frank_ocean@example.com",
+    "phone": "+77923456789",
+    "avatar": "profiles/user_1/avatars/frank-ocean-gettyimages-1147433944.jpg.avif"
+  }
+},
+{
+  "model": "profile_user.profile",
+  "pk": 4,
+  "fields": {
+    "user": [
+      "lana"
+    ],
+    "full_name": "",
+    "email": "",
+    "phone": "",
+    "avatar": ""
+  }
+},
+{
+  "model": "profile_user.profile",
+  "pk": 7,
+  "fields": {
+    "user": [
+      "alma"
+    ],
+    "full_name": "",
+    "email": "",
+    "phone": "",
+    "avatar": ""
+  }
+},
+{
+  "model": "profile_user.profile",
+  "pk": 11,
+  "fields": {
+    "user": [
+      "vanessa"
+    ],
+    "full_name": "",
+    "email": "vanessa@example.com",
+    "phone": "",
+    "avatar": ""
+  }
+},
+{
+  "model": "profile_user.profile",
+  "pk": 12,
+  "fields": {
+    "user": [
+      "kiara"
+    ],
+    "full_name": "Kiara Ohara",
+    "email": "kiara@example.com",
+    "phone": "+8702747384",
+    "avatar": ""
+  }
+},
+{
+  "model": "profile_user.profile",
+  "pk": 14,
+  "fields": {
+    "user": [
+      "luna_mark"
+    ],
+    "full_name": "Mark Luna",
+    "email": "luna_m@example.com",
+    "phone": "+77923456789",
+    "avatar": ""
+  }
+},
+{
+  "model": "profile_user.profile",
+  "pk": 15,
+  "fields": {
+    "user": [
+      "standard_user"
+    ],
+    "full_name": "Standard User",
+    "email": "standard_user@example.com",
+    "phone": "+70000000001",
+    "avatar": ""
+  }
+},
+{
+  "model": "profile_user.profile",
+  "pk": 16,
+  "fields": {
+    "user": [
+      "buyer"
+    ],
+    "full_name": "Buyer User",
+    "email": "buyer@example.com",
+    "phone": "+70000000002",
+    "avatar": ""
+  }
+}
+]

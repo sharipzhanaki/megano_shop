@@ -1,5 +1,6 @@
+from django.utils.timezone import now
 from django.db import transaction
-from django.db.models import Sum
+from django.db.models import Sum, F
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
@@ -7,7 +8,7 @@ from .models import BasketItem, Order, OrderItem
 from .serializers import OrderSerializer, PaymentSerializer
 from .services import DeliveryCalculator, PaymentService
 from .utils import get_session_basket, get_or_create_user_basket
-from catalog.models import Product
+from catalog.models import Product, Sale
 from catalog.serializers import ProductShortSerializer
 from profile_user.models import Profile
 
@@ -34,20 +35,35 @@ class BasketAPIView(APIView):
     def post(self, request):
         pid = int(request.data["id"])
         count = int(request.data["count"])
+        if pid <= 0 or count <= 0:
+            return Response(status=400)
+        product = Product.objects.filter(id=pid, available=True).first()
+        if not product:
+            return Response({"error": "Product not found"}, status=404)
+        stock = int(product.count)
         if request.user.is_authenticated:
             basket = get_or_create_user_basket(request)
-            item, created = BasketItem.objects.get_or_create(
+            item, _ = BasketItem.objects.get_or_create(
                 basket=basket,
                 product_id=pid,
-                defaults={"count": count},
+                defaults={"count": 0},
             )
-            if not created:
-                item.count += int(count)
-                item.save()
+            already = int(item.count)
+            can_add = max(0, stock - already)
+            add = min(count, can_add)
+            if add == 0:
+                return Response({"error": "Not enough stock"}, status=400)
+            item.count = already + add
+            item.save(update_fields=["count"])
             return self.get(request)
         session_basket = get_session_basket(request)
         key = str(pid)
-        session_basket[key] = int(session_basket.get(key, 0)) + int(count)
+        already = int(session_basket.get(key, 0))
+        can_add = max(0, stock - already)
+        add = min(count, can_add)
+        if add == 0:
+            return Response({"error": "Not enough stock"}, status=400)
+        session_basket[key] = already + add
         request.session.modified = True
         return self.get(request)
 
@@ -76,39 +92,55 @@ class BasketAPIView(APIView):
 
 class OrdersAPIView(APIView):
     def get(self, request):
-        if not request.user.is_authenticated:
-            return Response([], status=200)
         orders = Order.objects.filter(user=request.user)
-        serialized = OrderSerializer(orders, many=True, context={"request": request})
-        return Response(serialized.data)
+        return Response(OrderSerializer(orders, many=True, context={"request": request}).data)
 
     @transaction.atomic
     def post(self, request):
+        if request.user.is_anonymous:
+            return Response({"error": "Authentication required"}, status=401)
         basket = get_or_create_user_basket(request)
         items = BasketItem.objects.filter(basket=basket).select_related("product")
-        subtotal = sum(i.product.price * i.count for i in items)
-        order = Order.objects.create(user=request.user, total_cost=subtotal)
-        OrderItem.objects.bulk_create([
-            OrderItem(
+        if not items.exists():
+            return Response({"error": "Basket is empty"}, status=400)
+        today = now().date()
+        subtotal = 0
+        order = Order.objects.create(user=request.user, total_cost=0)
+        order_items = []
+        for item in items:
+            sale_price = (
+                Sale.objects
+                .filter(product=item.product, date_from__lte=today, date_to__gte=today)
+                .values_list("sale_price", flat=True)
+                .first()
+            )
+            unit_price = sale_price if sale_price is not None else item.product.price
+            subtotal += unit_price * item.count
+            order_items.append(OrderItem(
                 order=order,
                 product=item.product,
                 count=item.count,
-                price=item.product.price * item.count,
-            )for item in items
-        ])
+                price=unit_price,
+            ))
+        OrderItem.objects.bulk_create(order_items)
+        order.total_cost = subtotal
+        order.save(update_fields=["total_cost"])
         items.delete()
         return Response({"orderId": order.pk})
 
 
 class OrderDetailAPIView(APIView):
     def get(self, request, order_id):
+        if request.user.is_anonymous:
+            return Response({"error": "Authentication required"}, status=401)
         order = Order.objects.filter(id=order_id, user=request.user).first()
         if not order:
-            return Response(status=404)
-        serialized = OrderSerializer(order, context={"request": request})
-        return Response(serialized.data)
+            return Response({"error": "Order not found"}, status=404)
+        return Response(OrderSerializer(order, context={"request": request}).data)
 
     def post(self, request, order_id):
+        if request.user.is_anonymous:
+            return Response({"error": "Authentication required"}, status=401)
         order = Order.objects.get(id=order_id, user=request.user)
         delivery_type = request.data["deliveryType"]
         payment_type = request.data["paymentType"]
@@ -118,13 +150,21 @@ class OrderDetailAPIView(APIView):
         order.payment_type = payment_type
         order.city = city
         order.address = address
-        subtotal = order.items.aggregate(s=Sum("price")).get("s") or 0
+        subtotal = (
+                OrderItem.objects
+                .filter(order=order)
+                .aggregate(s=Sum(F("price") * F("count")))
+                .get("s") or 0
+        )
         delivery_price = DeliveryCalculator.calculate(
             subtotal=subtotal,
             delivery_type=delivery_type,
         )
         order.total_cost = subtotal + delivery_price
-        order.save(update_fields=["delivery_type", "payment_type", "city", "address", "total_cost"])
+        order.status = "accepted"
+        order.save(update_fields=[
+            "delivery_type", "payment_type", "city", "address", "total_cost", "status"
+        ])
         return Response({"orderId": order.id}, status=200)
 
 
@@ -136,18 +176,17 @@ class PaymentAPIView(APIView):
         serializer = PaymentSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         data = serializer.validated_data
-        card_number = data["number"]
-        month = data["month"]
-        year = data["year"]
-        if PaymentService.is_expired(month, year):
-            order.payment_error = "Payment expired"
-            order.save(update_fields=["payment_error"])
-            return Response({"error": "Payment expired"}, status=500)
-        if PaymentService.validate(card_number):
-            order.payment_error = "Card invalid"
-            order.save(update_fields=["payment_error"])
+        if PaymentService.validate(data["number"]):
             return Response({"error": "Card invalid"}, status=400)
+        if PaymentService.is_expired(data["month"], data["year"]):
+            return Response({"error": "Payment expired"}, status=400)
+        items = list(OrderItem.objects.filter(order=order).select_related("product"))
+        for item in items:
+            if item.product.count < item.count:
+                return Response({"error": "Not enough stock"}, status=400)
+        for item in items:
+            Product.objects.filter(id=item.product.id).update(count=F("count") - item.count)
+        Product.objects.filter(id__in=[i.product.id for i in items], count__lte=0).update(available=False)
         order.status = "paid"
-        order.payment_error = ""
-        order.save(update_fields=["status", "payment_error"])
+        order.save(update_fields=["status"])
         return Response(status=200)

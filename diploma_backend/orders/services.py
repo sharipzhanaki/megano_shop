@@ -46,6 +46,8 @@ class PaymentService:
             return False
         m = int(month)
         y = int(year)
+        if m < 1 or m > 12:
+            return True
         if y >= 100:
             y = y % 100
         now = datetime.datetime.now()

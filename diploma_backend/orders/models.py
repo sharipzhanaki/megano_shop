@@ -47,7 +47,6 @@ class Order(models.Model):
         ("created", "created"),
         ("accepted", "accepted"),
         ("paid", "paid"),
-        ("failed", "failed"),
     ]
 
     user = models.ForeignKey(User, on_delete=models.PROTECT, related_name="orders")
@@ -59,7 +58,6 @@ class Order(models.Model):
     city = models.CharField(max_length=100)
     address = models.TextField(max_length=255)
     products = models.ManyToManyField(Product, through="OrderItem", related_name="orders")
-    payment_error = models.TextField(blank=True, default="")
 
     def __str__(self):
         return f"Order #{self.pk} ({self.status})"

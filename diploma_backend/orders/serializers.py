@@ -7,7 +7,7 @@ from profile_user.models import Profile
 
 class OrderProductSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(source="product.id")
-    category = serializers.IntegerField(source="product.category_id")
+    category = serializers.IntegerField(source="product.subcategory.id")
     title = serializers.CharField(source="product.title")
     description = serializers.CharField(source="product.description")
     freeDelivery = serializers.BooleanField(source="product.free_delivery")
@@ -16,7 +16,7 @@ class OrderProductSerializer(serializers.ModelSerializer):
     rating = serializers.FloatField(source="product.rating")
     reviews = ReviewSerializer(source="product.reviews", many=True)
     count = serializers.IntegerField()
-    price = serializers.DecimalField(max_digits=10, decimal_places=2)
+    price = serializers.DecimalField(source="product.price", max_digits=10, decimal_places=2)
     date = serializers.DateTimeField(source="product.date", required=False)
 
     class Meta:
@@ -37,14 +37,13 @@ class OrderSerializer(serializers.ModelSerializer):
     paymentType = serializers.CharField(source="payment_type")
     totalCost = serializers.DecimalField(source="total_cost", max_digits=10, decimal_places=2)
     products = OrderProductSerializer(source="items", many=True)
-    paymentError = serializers.CharField(source="payment_error")
 
     class Meta:
         model = Order
         fields = (
             "id", "createdAt", "fullName", "email",
             "phone", "deliveryType", "paymentType", "totalCost",
-            "status", "city", "address", "products", "paymentError",
+            "status", "city", "address", "products",
         )
 
 

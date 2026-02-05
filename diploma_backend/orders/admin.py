@@ -45,7 +45,6 @@ class OrderAdmin(admin.ModelAdmin):
         ("Order", {"fields": ("user", "status", "created_at")}),
         ("Delivery & Payment", {"fields": ("delivery_type", "payment_type", "total_cost")}),
         ("Address", {"fields": ("city", "address")}),
-        ("Errors", {"fields": ("payment_error",)}),
     )
 
 @admin.register(OrderItem)
