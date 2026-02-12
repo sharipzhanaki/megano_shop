@@ -1,0 +1,244 @@
+[
+{
+  "model": "catalog.category",
+  "pk": 1,
+  "fields": {
+    "title": "Clothes",
+    "image": "categories/category_None/images/clothes1000.jpg",
+    "image_alt": "clothes"
+  }
+},
+{
+  "model": "catalog.category",
+  "pk": 2,
+  "fields": {
+    "title": "Smartphones",
+    "image": "categories/category_None/images/Best_Smartphones_October_2023.jpg.webp",
+    "image_alt": "smartphones"
+  }
+},
+{
+  "model": "catalog.category",
+  "pk": 3,
+  "fields": {
+    "title": "Notebook",
+    "image": "categories/category_None/images/bgho_2024_l4_002.jpg.webp",
+    "image_alt": "notebook"
+  }
+},
+{
+  "model": "catalog.subcategory",
+  "pk": 1,
+  "fields": {
+    "title": "Underwear",
+    "category": 1,
+    "image": "subcategories/category_None/images/6_pack_underwear-Underwears-1110077-1001_Total_E_cMzeHVH.jpg.webp",
+    "image_alt": "underwear"
+  }
+},
+{
+  "model": "catalog.subcategory",
+  "pk": 2,
+  "fields": {
+    "title": "iPhone",
+    "category": 2,
+    "image": "subcategories/category_None/images/Apple_dominiert_Top10_meistverkaufte_Smartphones.jpg",
+    "image_alt": "iPhone"
+  }
+},
+{
+  "model": "catalog.tag",
+  "pk": 1,
+  "fields": {
+    "name": "Sport"
+  }
+},
+{
+  "model": "catalog.tag",
+  "pk": 2,
+  "fields": {
+    "name": "Limited"
+  }
+},
+{
+  "model": "catalog.tag",
+  "pk": 3,
+  "fields": {
+    "name": "Winter"
+  }
+},
+{
+  "model": "catalog.tag",
+  "pk": 4,
+  "fields": {
+    "name": "Banner"
+  }
+},
+{
+  "model": "catalog.tag",
+  "pk": 5,
+  "fields": {
+    "name": "Men"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 1,
+  "fields": {
+    "subcategory": 1,
+    "title": "Thermal underwear",
+    "description": "Men's Thermal T-Shirt is a tight, skin-friendly garment, comfortable to wear.",
+    "full_description": "Men's Thermal Underwear uses high-quality insulating materials that can effectively store body temperature, prevent heat loss and provide excellent insulation for the wearer.",
+    "price": "109.00",
+    "count": 15,
+    "date": "2026-02-04T16:30:16.201Z",
+    "free_delivery": true,
+    "available": true,
+    "rating": 0.0,
+    "tags": [
+      1,
+      2,
+      3
+    ]
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 2,
+  "fields": {
+    "subcategory": 2,
+    "title": "iPhone 17 Pro Max",
+    "description": "iPhone 17 Pro Max is fast, stable, has excellent battery life with iOS 26.1 beta, and works wonderfully with VoiceOver.",
+    "full_description": "Dynamic Island.\r\nAlways-On display.\r\nProMotion technology with adaptive refresh rates up to 120Hz.\r\nHDR display.\r\nTrue Tone.\r\nWide colour (P3)\r\nHaptic Touch.\r\n20,00,000:1 contrast ratio (typical)",
+    "price": "1469.00",
+    "count": 9,
+    "date": "2026-02-04T16:38:08.299Z",
+    "free_delivery": true,
+    "available": true,
+    "rating": 0.0,
+    "tags": [
+      2,
+      4
+    ]
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 3,
+  "fields": {
+    "subcategory": 1,
+    "title": "Boxers for men",
+    "description": "From boxers to briefs, men's underwear is a uniquely personal choice and our collection caters to every preference.",
+    "full_description": "From boxers to briefs, men's underwear is a uniquely personal choice and our collection caters to every preference. From boxers to briefs, men's underwear is a uniquely personal choice and our collection caters to every preference.",
+    "price": "45.00",
+    "count": 36,
+    "date": "2026-02-04T16:43:46.290Z",
+    "free_delivery": false,
+    "available": true,
+    "rating": 0.0,
+    "tags": [
+      5
+    ]
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 1,
+  "fields": {
+    "product": 1,
+    "image": "products/product_1/images/4FWAW24USEAM173-20S-M-03-MAIN.jpg.avif",
+    "alt": "Thermal underwear front view"
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 2,
+  "fields": {
+    "product": 2,
+    "image": "products/product_2/images/IMG-18065550_m_jpeg_1_c35e6d4d-ca83-45ac-b0d7-246b28ff97a7.jpg.webp",
+    "alt": "orange"
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 3,
+  "fields": {
+    "product": 2,
+    "image": "products/product_2/images/IMG-18065572_m_jpeg_1_b346e1f8-dc92-4d1a-aa96-3aa6be0cfc5e.jpg.webp",
+    "alt": "grey"
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 4,
+  "fields": {
+    "product": 3,
+    "image": "products/product_3/images/571a137018514a488e04bc9ffe924b36.jpg.webp",
+    "alt": "boxers"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 1,
+  "fields": {
+    "product": 1,
+    "name": "Size",
+    "value": "M/L"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 2,
+  "fields": {
+    "product": 1,
+    "name": "Color",
+    "value": "Black"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 3,
+  "fields": {
+    "product": 2,
+    "name": "Color",
+    "value": "orange, grey"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 4,
+  "fields": {
+    "product": 2,
+    "name": "Size",
+    "value": "512 GB"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 5,
+  "fields": {
+    "product": 3,
+    "name": "color",
+    "value": "blue"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 6,
+  "fields": {
+    "product": 3,
+    "name": "size",
+    "value": "M/L"
+  }
+},
+{
+  "model": "catalog.sale",
+  "pk": 1,
+  "fields": {
+    "product": 1,
+    "sale_price": "79.00",
+    "date_from": "2026-02-05",
+    "date_to": "2026-02-10"
+  }
+}
+]

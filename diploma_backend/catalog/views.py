@@ -1,4 +1,5 @@
-from django.db.models import Count
+from django.db.models import Count, Q, Value, IntegerField, Sum
+from django.db.models.functions import Coalesce
 from django.utils.timezone import now
 from rest_framework.views import APIView
 from rest_framework.generics import ListAPIView, RetrieveAPIView
@@ -22,11 +23,7 @@ class CategoriesListAPIView(ListAPIView):
     pagination_class = None
 
     def get_queryset(self):
-        return (
-            Category.objects
-            .filter(parent__isnull=True)
-            .prefetch_related("subcategories")
-        )
+        return Category.objects.prefetch_related("subcategories")
 
 
 class CatalogListAPIView(ListAPIView):
@@ -37,7 +34,7 @@ class CatalogListAPIView(ListAPIView):
     def get_queryset(self):
         queryset = (
             Product.objects
-            .select_related("category")
+            .select_related("subcategory")
             .prefetch_related("images", "tags")
             .annotate(reviews_count=Count("reviews"))
         )
@@ -59,7 +56,7 @@ class CatalogListAPIView(ListAPIView):
             queryset = queryset.filter(available=True, count__gt=0)
         category = q.get("category")
         if category:
-            queryset = queryset.filter(category_id=category)
+            queryset = queryset.filter(subcategory_id=category)
         tags = q.getlist("tags[]") or q.getlist("tags")
         if tags:
             queryset = queryset.filter(tags__id__in=tags).distinct()
@@ -79,20 +76,24 @@ class CatalogListAPIView(ListAPIView):
 
 
 class PopularProductsAPIView(ListAPIView):
-    """GET /products/popular - топ товаров по рейтингу/отзывам"""
+    """GET /products/popular - топ 8 часто покупаемых товаров с хорошим рейтингом"""
     serializer_class = ProductShortSerializer
 
     def get_queryset(self):
         return (
             Product.objects
             .prefetch_related("images", "tags")
-            .annotate(reviews_count=Count("reviews"))
-            .order_by("-rating", "-reviews_count")[:3]
+            .annotate(reviews_count=Count("reviews", distinct=True),
+                      purchases=Coalesce(Sum(
+                          "order_items__count",
+                          filter=Q(order_items__order__status="paid"),
+                      ), Value(0), output_field=IntegerField()))
+        .order_by("-purchases", "-rating", "-reviews_count")[:8]
         )
 
 
 class LimitedProductsAPIView(ListAPIView):
-    """GET /products/limited - товары с тегом 'limited' - ограниченный тираж"""
+    """GET /products/limited - товары с тегом 'limited' - слайдер с ограниченным тиражом"""
     serializer_class = ProductShortSerializer
 
     def get_queryset(self):
@@ -131,6 +132,7 @@ class SalesListAPIView(ListAPIView):
             .filter(date_from__lte=today, date_to__gte=today)
             .select_related("product")
             .prefetch_related("product__images", "product__tags")
+            .order_by("-date_from")
         )
 
 
@@ -143,13 +145,13 @@ class ProductDetailAPIView(RetrieveAPIView):
     def get_queryset(self):
         return (
             Product.objects
-            .select_related("category")
+            .select_related("subcategory")
             .prefetch_related("images", "tags", "specifications", "reviews")
         )
 
 
 class AddReviewAPIView(APIView):
-    """POST /product/{id}/review - добавить отзыв"""
+    """POST /product/{id}/review - добавить отзыв товару"""
     def post(self, request, id):
         product = Product.objects.filter(id=id).first()
         if not product:

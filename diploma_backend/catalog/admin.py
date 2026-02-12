@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from .models import (
-    Category, Product, ProductImage,
+    Category, Subcategory, Product, ProductImage,
     ProductSpecification, Sale, Review, Tag
 )
 
@@ -35,11 +35,13 @@ class ProductSaleInline(admin.TabularInline):
 class ProductAdmin(admin.ModelAdmin):
     """Основная модель товаров"""
     list_display = (
-        "id", "title", "category", "price", "count",
+        "id", "title", "subcategory", "price", "count",
         "free_delivery", "available", "rating"
     )
-    list_filter = ("category", "free_delivery", "available", "tags")
-    search_fields = ("title", "description", "category__title")
+    list_filter = ("subcategory", "free_delivery", "available", "tags")
+    search_fields = ("title", "description", "subcategory__title")
+    raw_id_fields = ("subcategory",)
+    autocomplete_fields = ("subcategory", "tags",)
     ordering = ("-date",)
     list_per_page = 20
     inlines = [
@@ -52,17 +54,24 @@ class ProductAdmin(admin.ModelAdmin):
     def get_queryset(self, request):
         return (
             super().get_queryset(request)
-            .select_related("category")
+            .select_related("subcategory")
             .prefetch_related("images", "tags", "specifications", "reviews", "sales")
         )
 
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    """Категории и подкатегории"""
-    list_display = ("id", "title", "parent")
-    list_filter = ("parent",)
+    """Категории товаров"""
+    list_display = ("id", "title")
     search_fields = ("title",)
+
+
+@admin.register(Subcategory)
+class SubcategoryAdmin(admin.ModelAdmin):
+    """Подкатегории товаров"""
+    list_display = ("id", "title", "category")
+    list_filter = ("category",)
+    search_fields = ("title", "category__title")
 
 
 @admin.register(Tag)
