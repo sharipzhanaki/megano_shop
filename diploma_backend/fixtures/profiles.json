@@ -3,61 +3,51 @@
   "model": "profile_user.profile",
   "pk": 1,
   "fields": {
-    "user": [
-      "frank_ocean"
-    ],
-    "full_name": "Ocean Frank",
+    "user": 2,
+    "full_name": "Frank Ocean",
     "email": "frank_ocean@example.com",
     "phone": "+77923456789",
-    "avatar": "profiles/user_1/avatars/frank-ocean-gettyimages-1147433944.jpg.avif"
+    "avatar": "profiles/user_1/avatars/ab67616100005174ee3123e593174208f9754fab.jpeg"
+  }
+},
+{
+  "model": "profile_user.profile",
+  "pk": 2,
+  "fields": {
+    "user": 3,
+    "full_name": "Milana Petrova",
+    "email": "lana@example.com",
+    "phone": "+79031234567",
+    "avatar": ""
+  }
+},
+{
+  "model": "profile_user.profile",
+  "pk": 3,
+  "fields": {
+    "user": 4,
+    "full_name": "Alma Bekova",
+    "email": "alma@example.com",
+    "phone": "+77071234567",
+    "avatar": ""
   }
 },
 {
   "model": "profile_user.profile",
   "pk": 4,
   "fields": {
-    "user": [
-      "lana"
-    ],
-    "full_name": "",
-    "email": "",
-    "phone": "",
-    "avatar": ""
-  }
-},
-{
-  "model": "profile_user.profile",
-  "pk": 7,
-  "fields": {
-    "user": [
-      "alma"
-    ],
-    "full_name": "",
-    "email": "",
-    "phone": "",
-    "avatar": ""
-  }
-},
-{
-  "model": "profile_user.profile",
-  "pk": 11,
-  "fields": {
-    "user": [
-      "vanessa"
-    ],
-    "full_name": "",
+    "user": 5,
+    "full_name": "Vanessa Williams",
     "email": "vanessa@example.com",
-    "phone": "",
-    "avatar": ""
+    "phone": "+12025550142",
+    "avatar": "profiles/user_4/avatars/30O1Af0wy6UBt8EpVRuq28tTGoT.jpg.webp"
   }
 },
 {
   "model": "profile_user.profile",
-  "pk": 12,
+  "pk": 5,
   "fields": {
-    "user": [
-      "kiara"
-    ],
+    "user": 6,
     "full_name": "Kiara Ohara",
     "email": "kiara@example.com",
     "phone": "+8702747384",
@@ -66,11 +56,9 @@
 },
 {
   "model": "profile_user.profile",
-  "pk": 14,
+  "pk": 6,
   "fields": {
-    "user": [
-      "luna_mark"
-    ],
+    "user": 7,
     "full_name": "Mark Luna",
     "email": "luna_m@example.com",
     "phone": "+77923456789",
@@ -79,27 +67,133 @@
 },
 {
   "model": "profile_user.profile",
-  "pk": 15,
+  "pk": 7,
   "fields": {
-    "user": [
-      "standard_user"
-    ],
+    "user": 8,
     "full_name": "Standard User",
     "email": "standard_user@example.com",
     "phone": "+70000000001",
+    "avatar": "profiles/user_7/avatars/images.png"
+  }
+},
+{
+  "model": "profile_user.profile",
+  "pk": 8,
+  "fields": {
+    "user": 9,
+    "full_name": "Buyer User",
+    "email": "buyer@example.com",
+    "phone": "+70000000002",
+    "avatar": "profiles/user_8/avatars/images-18.jpeg"
+  }
+},
+{
+  "model": "profile_user.profile",
+  "pk": 9,
+  "fields": {
+    "user": 10,
+    "full_name": "Alex Johnson",
+    "email": "alex.johnson@example.com",
+    "phone": "+12025550101",
+    "avatar": "profiles/user_9/avatars/images-19.jpeg"
+  }
+},
+{
+  "model": "profile_user.profile",
+  "pk": 10,
+  "fields": {
+    "user": 11,
+    "full_name": "Maria Garcia",
+    "email": "maria.garcia@example.com",
+    "phone": "+34912345678",
+    "avatar": "profiles/user_10/avatars/images-20.jpeg"
+  }
+},
+{
+  "model": "profile_user.profile",
+  "pk": 11,
+  "fields": {
+    "user": 12,
+    "full_name": "James Wilson",
+    "email": "james.wilson@example.com",
+    "phone": "+12125550198",
+    "avatar": "profiles/user_11/avatars/images-21.jpeg"
+  }
+},
+{
+  "model": "profile_user.profile",
+  "pk": 12,
+  "fields": {
+    "user": 13,
+    "full_name": "Sophia Brown",
+    "email": "sophia.brown@example.com",
+    "phone": "+441632960101",
     "avatar": ""
+  }
+},
+{
+  "model": "profile_user.profile",
+  "pk": 13,
+  "fields": {
+    "user": 14,
+    "full_name": "Oliver Davis",
+    "email": "oliver.davis@example.com",
+    "phone": "+61291234567",
+    "avatar": ""
+  }
+},
+{
+  "model": "profile_user.profile",
+  "pk": 14,
+  "fields": {
+    "user": 15,
+    "full_name": "Emma Miller",
+    "email": "emma.miller@example.com",
+    "phone": "+4930123456",
+    "avatar": ""
+  }
+},
+{
+  "model": "profile_user.profile",
+  "pk": 15,
+  "fields": {
+    "user": 16,
+    "full_name": "Noah Taylor",
+    "email": "noah.taylor@example.com",
+    "phone": "+15145550132",
+    "avatar": "profiles/user_15/avatars/images-25.jpeg"
   }
 },
 {
   "model": "profile_user.profile",
   "pk": 16,
   "fields": {
-    "user": [
-      "buyer"
-    ],
-    "full_name": "Buyer User",
-    "email": "buyer@example.com",
-    "phone": "+70000000002",
+    "user": 17,
+    "full_name": "Isabella Moore",
+    "email": "isabella.moore@example.com",
+    "phone": "+39012345678",
+    "avatar": "profiles/user_16/avatars/images-26.jpeg"
+  }
+},
+{
+  "model": "profile_user.profile",
+  "pk": 17,
+  "fields": {
+    "user": 18,
+    "full_name": "Liam Anderson",
+    "email": "liam.anderson@example.com",
+    "phone": "+13125550167",
+    "avatar": ""
+  }
+},
+{
+  "model": "profile_user.profile",
+  "pk": 18,
+  "fields": {
+    "user": 19,
+    "full_name": "Ava Thomas",
+    "email": "ava.thomas@example.com",
+    "phone": "+33123456789",
     "avatar": ""
   }
 }

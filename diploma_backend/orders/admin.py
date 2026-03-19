@@ -40,6 +40,7 @@ class OrderAdmin(admin.ModelAdmin):
     list_filter = ("status", "delivery_type", "payment_type", "created_at")
     search_fields = ("id", "user__username", "user__email", "city", "address")
     date_hierarchy = "created_at"
+    readonly_fields = ("created_at",)
     inlines = (OrderItemInline,)
     fieldsets = (
         ("Order", {"fields": ("user", "status", "created_at")}),

@@ -57,6 +57,14 @@ class Product(models.Model):
     class Meta:
         verbose_name = "Product"
         verbose_name_plural = "Products"
+        indexes = [
+            models.Index(fields=["date"], name="product_date_idx"),
+            models.Index(fields=["price"], name="product_price_idx"),
+            models.Index(fields=["rating"], name="product_rating_idx"),
+            models.Index(fields=["available", "date"], name="product_available_date_idx"),
+            models.Index(fields=["available", "rating"], name="product_available_rating_idx"),
+            models.Index(fields=["available", "price"], name="product_available_price_idx"),
+        ]
 
     subcategory = models.ForeignKey(Subcategory, on_delete=models.PROTECT, related_name="products")
     title = models.CharField(max_length=255)
@@ -120,6 +128,9 @@ class Sale(models.Model):
     class Meta:
         verbose_name = "Sale"
         verbose_name_plural = "Sales"
+        indexes = [
+            models.Index(fields=["date_from", "date_to"], name="sale_date_range_idx"),
+        ]
 
     product = models.ForeignKey(Product, related_name="sales", on_delete=models.CASCADE)
     sale_price = models.DecimalField(max_digits=10, decimal_places=2)
