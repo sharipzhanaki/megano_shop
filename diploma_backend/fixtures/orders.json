@@ -3,82 +3,492 @@
   "model": "orders.basket",
   "pk": 1,
   "fields": {
-    "user": [
-      "admin"
-    ]
+    "user": 1
   }
 },
 {
   "model": "orders.basket",
   "pk": 2,
   "fields": {
-    "user": [
-      "frank_ocean"
-    ]
+    "user": 2
+  }
+},
+{
+  "model": "orders.basket",
+  "pk": 3,
+  "fields": {
+    "user": 10
+  }
+},
+{
+  "model": "orders.basket",
+  "pk": 4,
+  "fields": {
+    "user": 11
+  }
+},
+{
+  "model": "orders.basket",
+  "pk": 5,
+  "fields": {
+    "user": 12
+  }
+},
+{
+  "model": "orders.basket",
+  "pk": 6,
+  "fields": {
+    "user": 13
+  }
+},
+{
+  "model": "orders.basket",
+  "pk": 7,
+  "fields": {
+    "user": 14
+  }
+},
+{
+  "model": "orders.basket",
+  "pk": 8,
+  "fields": {
+    "user": 15
+  }
+},
+{
+  "model": "orders.basket",
+  "pk": 9,
+  "fields": {
+    "user": 16
+  }
+},
+{
+  "model": "orders.basket",
+  "pk": 10,
+  "fields": {
+    "user": 17
+  }
+},
+{
+  "model": "orders.basket",
+  "pk": 11,
+  "fields": {
+    "user": 18
+  }
+},
+{
+  "model": "orders.basket",
+  "pk": 12,
+  "fields": {
+    "user": 19
+  }
+},
+{
+  "model": "orders.basket",
+  "pk": 13,
+  "fields": {
+    "user": 3
+  }
+},
+{
+  "model": "orders.basket",
+  "pk": 14,
+  "fields": {
+    "user": 5
+  }
+},
+{
+  "model": "orders.basket",
+  "pk": 15,
+  "fields": {
+    "user": 6
+  }
+},
+{
+  "model": "orders.basket",
+  "pk": 16,
+  "fields": {
+    "user": 8
+  }
+},
+{
+  "model": "orders.basket",
+  "pk": 17,
+  "fields": {
+    "user": 9
+  }
+},
+{
+  "model": "orders.deliverysettings",
+  "pk": 1,
+  "fields": {
+    "default_delivery_price": "3.00",
+    "free_delivery": "50.00",
+    "express_delivery_price": "5.00"
   }
 },
 {
   "model": "orders.order",
   "pk": 1,
   "fields": {
-    "user": [
-      "frank_ocean"
-    ],
+    "user": 2,
     "created_at": "2026-02-05T12:26:18.551Z",
     "delivery_type": "express",
     "payment_type": "online",
     "total_cost": "1474.00",
     "status": "paid",
-    "city": "",
-    "address": ""
+    "city": "New York",
+    "address": "123 Broadway, Apt 5"
   }
 },
 {
   "model": "orders.order",
   "pk": 2,
   "fields": {
-    "user": [
-      "frank_ocean"
-    ],
+    "user": 2,
     "created_at": "2026-02-05T12:31:28.255Z",
     "delivery_type": "ordinary",
     "payment_type": "someone",
     "total_cost": "180.00",
     "status": "paid",
-    "city": "",
-    "address": ""
+    "city": "New York",
+    "address": "123 Broadway, Apt 5"
   }
 },
 {
   "model": "orders.order",
   "pk": 3,
   "fields": {
-    "user": [
-      "admin"
-    ],
+    "user": 1,
     "created_at": "2026-02-05T14:50:23.884Z",
     "delivery_type": "ordinary",
     "payment_type": "online",
     "total_cost": "218.00",
     "status": "created",
-    "city": "",
-    "address": ""
+    "city": "Los Angeles",
+    "address": "500 Sunset Blvd"
   }
 },
 {
   "model": "orders.order",
   "pk": 4,
   "fields": {
-    "user": [
-      "admin"
-    ],
+    "user": 1,
     "created_at": "2026-02-05T15:44:03.628Z",
     "delivery_type": "ordinary",
     "payment_type": "online",
     "total_cost": "158.00",
     "status": "accepted",
-    "city": "",
-    "address": ""
+    "city": "Los Angeles",
+    "address": "500 Sunset Blvd"
+  }
+},
+{
+  "model": "orders.order",
+  "pk": 5,
+  "fields": {
+    "user": 10,
+    "created_at": "2026-02-15T10:00:00Z",
+    "delivery_type": "ordinary",
+    "payment_type": "online",
+    "total_cost": "1299.00",
+    "status": "paid",
+    "city": "Chicago",
+    "address": "77 West Wacker Drive"
+  }
+},
+{
+  "model": "orders.order",
+  "pk": 6,
+  "fields": {
+    "user": 10,
+    "created_at": "2026-03-01T11:30:00Z",
+    "delivery_type": "express",
+    "payment_type": "online",
+    "total_cost": "349.00",
+    "status": "accepted",
+    "city": "Chicago",
+    "address": "77 West Wacker Drive"
+  }
+},
+{
+  "model": "orders.order",
+  "pk": 7,
+  "fields": {
+    "user": 10,
+    "created_at": "2026-03-10T09:00:00Z",
+    "delivery_type": "ordinary",
+    "payment_type": "someone",
+    "total_cost": "54.98",
+    "status": "created",
+    "city": "Chicago",
+    "address": "77 West Wacker Drive"
+  }
+},
+{
+  "model": "orders.order",
+  "pk": 8,
+  "fields": {
+    "user": 11,
+    "created_at": "2026-02-20T14:00:00Z",
+    "delivery_type": "ordinary",
+    "payment_type": "online",
+    "total_cost": "1199.00",
+    "status": "paid",
+    "city": "Madrid",
+    "address": "Calle Gran Via 28"
+  }
+},
+{
+  "model": "orders.order",
+  "pk": 9,
+  "fields": {
+    "user": 11,
+    "created_at": "2026-03-05T16:00:00Z",
+    "delivery_type": "express",
+    "payment_type": "online",
+    "total_cost": "249.00",
+    "status": "paid",
+    "city": "Madrid",
+    "address": "Calle Gran Via 28"
+  }
+},
+{
+  "model": "orders.order",
+  "pk": 10,
+  "fields": {
+    "user": 12,
+    "created_at": "2026-02-22T09:00:00Z",
+    "delivery_type": "ordinary",
+    "payment_type": "online",
+    "total_cost": "2499.00",
+    "status": "paid",
+    "city": "Houston",
+    "address": "1 Space Center Blvd"
+  }
+},
+{
+  "model": "orders.order",
+  "pk": 11,
+  "fields": {
+    "user": 12,
+    "created_at": "2026-03-08T12:00:00Z",
+    "delivery_type": "ordinary",
+    "payment_type": "someone",
+    "total_cost": "109.00",
+    "status": "accepted",
+    "city": "Houston",
+    "address": "1 Space Center Blvd"
+  }
+},
+{
+  "model": "orders.order",
+  "pk": 12,
+  "fields": {
+    "user": 13,
+    "created_at": "2026-02-25T13:00:00Z",
+    "delivery_type": "express",
+    "payment_type": "online",
+    "total_cost": "799.00",
+    "status": "paid",
+    "city": "London",
+    "address": "10 Downing Street"
+  }
+},
+{
+  "model": "orders.order",
+  "pk": 13,
+  "fields": {
+    "user": 13,
+    "created_at": "2026-03-12T10:00:00Z",
+    "delivery_type": "ordinary",
+    "payment_type": "online",
+    "total_cost": "89.00",
+    "status": "created",
+    "city": "London",
+    "address": "10 Downing Street"
+  }
+},
+{
+  "model": "orders.order",
+  "pk": 14,
+  "fields": {
+    "user": 13,
+    "created_at": "2026-03-15T08:00:00Z",
+    "delivery_type": "ordinary",
+    "payment_type": "someone",
+    "total_cost": "279.00",
+    "status": "accepted",
+    "city": "London",
+    "address": "10 Downing Street"
+  }
+},
+{
+  "model": "orders.order",
+  "pk": 15,
+  "fields": {
+    "user": 14,
+    "created_at": "2026-03-02T11:00:00Z",
+    "delivery_type": "ordinary",
+    "payment_type": "online",
+    "total_cost": "1799.00",
+    "status": "paid",
+    "city": "Sydney",
+    "address": "1 Harbour Bridge Road"
+  }
+},
+{
+  "model": "orders.order",
+  "pk": 16,
+  "fields": {
+    "user": 14,
+    "created_at": "2026-03-14T15:00:00Z",
+    "delivery_type": "express",
+    "payment_type": "online",
+    "total_cost": "45.00",
+    "status": "created",
+    "city": "Sydney",
+    "address": "1 Harbour Bridge Road"
+  }
+},
+{
+  "model": "orders.order",
+  "pk": 17,
+  "fields": {
+    "user": 15,
+    "created_at": "2026-03-03T10:00:00Z",
+    "delivery_type": "ordinary",
+    "payment_type": "online",
+    "total_cost": "999.00",
+    "status": "paid",
+    "city": "Berlin",
+    "address": "Unter den Linden 1"
+  }
+},
+{
+  "model": "orders.order",
+  "pk": 18,
+  "fields": {
+    "user": 15,
+    "created_at": "2026-03-16T09:00:00Z",
+    "delivery_type": "ordinary",
+    "payment_type": "someone",
+    "total_cost": "34.99",
+    "status": "accepted",
+    "city": "Berlin",
+    "address": "Unter den Linden 1"
+  }
+},
+{
+  "model": "orders.order",
+  "pk": 19,
+  "fields": {
+    "user": 16,
+    "created_at": "2026-03-05T14:00:00Z",
+    "delivery_type": "express",
+    "payment_type": "online",
+    "total_cost": "2199.00",
+    "status": "paid",
+    "city": "Toronto",
+    "address": "290 Bremner Blvd"
+  }
+},
+{
+  "model": "orders.order",
+  "pk": 20,
+  "fields": {
+    "user": 16,
+    "created_at": "2026-03-18T11:00:00Z",
+    "delivery_type": "ordinary",
+    "payment_type": "online",
+    "total_cost": "109.00",
+    "status": "created",
+    "city": "Toronto",
+    "address": "290 Bremner Blvd"
+  }
+},
+{
+  "model": "orders.order",
+  "pk": 21,
+  "fields": {
+    "user": 17,
+    "created_at": "2026-03-06T09:00:00Z",
+    "delivery_type": "ordinary",
+    "payment_type": "online",
+    "total_cost": "429.00",
+    "status": "paid",
+    "city": "Rome",
+    "address": "Via dei Fori Imperiali 1"
+  }
+},
+{
+  "model": "orders.order",
+  "pk": 22,
+  "fields": {
+    "user": 17,
+    "created_at": "2026-03-11T13:00:00Z",
+    "delivery_type": "express",
+    "payment_type": "online",
+    "total_cost": "349.00",
+    "status": "accepted",
+    "city": "Rome",
+    "address": "Via dei Fori Imperiali 1"
+  }
+},
+{
+  "model": "orders.order",
+  "pk": 23,
+  "fields": {
+    "user": 18,
+    "created_at": "2026-03-07T10:00:00Z",
+    "delivery_type": "ordinary",
+    "payment_type": "someone",
+    "total_cost": "3499.00",
+    "status": "paid",
+    "city": "Seattle",
+    "address": "400 Broad St"
+  }
+},
+{
+  "model": "orders.order",
+  "pk": 24,
+  "fields": {
+    "user": 18,
+    "created_at": "2026-03-17T08:00:00Z",
+    "delivery_type": "ordinary",
+    "payment_type": "online",
+    "total_cost": "49.99",
+    "status": "created",
+    "city": "Seattle",
+    "address": "400 Broad St"
+  }
+},
+{
+  "model": "orders.order",
+  "pk": 25,
+  "fields": {
+    "user": 19,
+    "created_at": "2026-03-08T15:00:00Z",
+    "delivery_type": "ordinary",
+    "payment_type": "online",
+    "total_cost": "799.00",
+    "status": "paid",
+    "city": "Paris",
+    "address": "Champs-Elysees 101"
+  }
+},
+{
+  "model": "orders.order",
+  "pk": 26,
+  "fields": {
+    "user": 19,
+    "created_at": "2026-03-16T16:00:00Z",
+    "delivery_type": "express",
+    "payment_type": "online",
+    "total_cost": "39.99",
+    "status": "accepted",
+    "city": "Paris",
+    "address": "Champs-Elysees 101"
   }
 },
 {
@@ -122,12 +532,233 @@
   }
 },
 {
-  "model": "orders.deliverysettings",
-  "pk": 1,
+  "model": "orders.orderitem",
+  "pk": 5,
   "fields": {
-    "default_delivery_price": "3.00",
-    "free_delivery": "50.00",
-    "express_delivery_price": "5.00"
+    "order": 5,
+    "product": 4,
+    "count": 1,
+    "price": "1299.00"
+  }
+},
+{
+  "model": "orders.orderitem",
+  "pk": 6,
+  "fields": {
+    "order": 6,
+    "product": 8,
+    "count": 1,
+    "price": "349.00"
+  }
+},
+{
+  "model": "orders.orderitem",
+  "pk": 7,
+  "fields": {
+    "order": 7,
+    "product": 5,
+    "count": 1,
+    "price": "19.99"
+  }
+},
+{
+  "model": "orders.orderitem",
+  "pk": 8,
+  "fields": {
+    "order": 7,
+    "product": 10,
+    "count": 1,
+    "price": "34.99"
+  }
+},
+{
+  "model": "orders.orderitem",
+  "pk": 9,
+  "fields": {
+    "order": 8,
+    "product": 6,
+    "count": 1,
+    "price": "1199.00"
+  }
+},
+{
+  "model": "orders.orderitem",
+  "pk": 10,
+  "fields": {
+    "order": 9,
+    "product": 15,
+    "count": 1,
+    "price": "249.00"
+  }
+},
+{
+  "model": "orders.orderitem",
+  "pk": 11,
+  "fields": {
+    "order": 10,
+    "product": 11,
+    "count": 1,
+    "price": "2499.00"
+  }
+},
+{
+  "model": "orders.orderitem",
+  "pk": 12,
+  "fields": {
+    "order": 11,
+    "product": 1,
+    "count": 1,
+    "price": "109.00"
+  }
+},
+{
+  "model": "orders.orderitem",
+  "pk": 13,
+  "fields": {
+    "order": 12,
+    "product": 9,
+    "count": 1,
+    "price": "799.00"
+  }
+},
+{
+  "model": "orders.orderitem",
+  "pk": 14,
+  "fields": {
+    "order": 13,
+    "product": 13,
+    "count": 1,
+    "price": "89.00"
+  }
+},
+{
+  "model": "orders.orderitem",
+  "pk": 15,
+  "fields": {
+    "order": 14,
+    "product": 20,
+    "count": 1,
+    "price": "279.00"
+  }
+},
+{
+  "model": "orders.orderitem",
+  "pk": 16,
+  "fields": {
+    "order": 15,
+    "product": 7,
+    "count": 1,
+    "price": "1799.00"
+  }
+},
+{
+  "model": "orders.orderitem",
+  "pk": 17,
+  "fields": {
+    "order": 16,
+    "product": 3,
+    "count": 1,
+    "price": "45.00"
+  }
+},
+{
+  "model": "orders.orderitem",
+  "pk": 18,
+  "fields": {
+    "order": 17,
+    "product": 12,
+    "count": 1,
+    "price": "999.00"
+  }
+},
+{
+  "model": "orders.orderitem",
+  "pk": 19,
+  "fields": {
+    "order": 18,
+    "product": 10,
+    "count": 1,
+    "price": "34.99"
+  }
+},
+{
+  "model": "orders.orderitem",
+  "pk": 20,
+  "fields": {
+    "order": 19,
+    "product": 14,
+    "count": 1,
+    "price": "2199.00"
+  }
+},
+{
+  "model": "orders.orderitem",
+  "pk": 21,
+  "fields": {
+    "order": 20,
+    "product": 1,
+    "count": 1,
+    "price": "109.00"
+  }
+},
+{
+  "model": "orders.orderitem",
+  "pk": 22,
+  "fields": {
+    "order": 21,
+    "product": 17,
+    "count": 1,
+    "price": "429.00"
+  }
+},
+{
+  "model": "orders.orderitem",
+  "pk": 23,
+  "fields": {
+    "order": 22,
+    "product": 8,
+    "count": 1,
+    "price": "349.00"
+  }
+},
+{
+  "model": "orders.orderitem",
+  "pk": 24,
+  "fields": {
+    "order": 23,
+    "product": 21,
+    "count": 1,
+    "price": "3499.00"
+  }
+},
+{
+  "model": "orders.orderitem",
+  "pk": 25,
+  "fields": {
+    "order": 24,
+    "product": 23,
+    "count": 1,
+    "price": "49.99"
+  }
+},
+{
+  "model": "orders.orderitem",
+  "pk": 26,
+  "fields": {
+    "order": 25,
+    "product": 18,
+    "count": 1,
+    "price": "799.00"
+  }
+},
+{
+  "model": "orders.orderitem",
+  "pk": 27,
+  "fields": {
+    "order": 26,
+    "product": 22,
+    "count": 1,
+    "price": "39.99"
   }
 }
 ]

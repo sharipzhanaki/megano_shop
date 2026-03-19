@@ -4,7 +4,7 @@
   "pk": 1,
   "fields": {
     "title": "Clothes",
-    "image": "categories/category_None/images/clothes1000.jpg",
+    "image": "categories/category_1/images/shutterstock_1540979699-scaled-1.jpeg",
     "image_alt": "clothes"
   }
 },
@@ -13,7 +13,7 @@
   "pk": 2,
   "fields": {
     "title": "Smartphones",
-    "image": "categories/category_None/images/Best_Smartphones_October_2023.jpg.webp",
+    "image": "categories/category_2/images/Best_Smartphones_October_2023.jpg.webp",
     "image_alt": "smartphones"
   }
 },
@@ -22,8 +22,17 @@
   "pk": 3,
   "fields": {
     "title": "Notebook",
-    "image": "categories/category_None/images/bgho_2024_l4_002.jpg.webp",
+    "image": "categories/category_3/images/laptopstopicpage-2048px-3685-3x2-1.jpg.webp",
     "image_alt": "notebook"
+  }
+},
+{
+  "model": "catalog.category",
+  "pk": 4,
+  "fields": {
+    "title": "Headphones",
+    "image": "categories/category_4/images/BEST-RUNNING-HEADPHONES-0016-2x1-1.jpg.webp",
+    "image_alt": "headphones"
   }
 },
 {
@@ -32,7 +41,7 @@
   "fields": {
     "title": "Underwear",
     "category": 1,
-    "image": "subcategories/category_None/images/6_pack_underwear-Underwears-1110077-1001_Total_E_cMzeHVH.jpg.webp",
+    "image": "subcategories/category_1/images/6_pack_underwear-Underwears-1110077-1001_Total_Eclipse_800x.jpg.webp",
     "image_alt": "underwear"
   }
 },
@@ -42,8 +51,58 @@
   "fields": {
     "title": "iPhone",
     "category": 2,
-    "image": "subcategories/category_None/images/Apple_dominiert_Top10_meistverkaufte_Smartphones.jpg",
+    "image": "subcategories/category_2/images/Apple_dominiert_Top10_meistverkaufte_Smartphones.jpg",
     "image_alt": "iPhone"
+  }
+},
+{
+  "model": "catalog.subcategory",
+  "pk": 3,
+  "fields": {
+    "title": "MacBook",
+    "category": 3,
+    "image": "subcategories/category_3/images/laptopstopicpage-2048px-3685-3x2-1.jpg.webp",
+    "image_alt": "MacBook"
+  }
+},
+{
+  "model": "catalog.subcategory",
+  "pk": 4,
+  "fields": {
+    "title": "T-Shirts",
+    "category": 1,
+    "image": "subcategories/category_4/images/C10636s.jpg.webp",
+    "image_alt": "T-Shirts"
+  }
+},
+{
+  "model": "catalog.subcategory",
+  "pk": 5,
+  "fields": {
+    "title": "Android",
+    "category": 2,
+    "image": "subcategories/category_5/images/HMD_Smartphones-Catalogue-OG_Image.jpg",
+    "image_alt": "Android"
+  }
+},
+{
+  "model": "catalog.subcategory",
+  "pk": 6,
+  "fields": {
+    "title": "Gaming Laptops",
+    "category": 3,
+    "image": "subcategories/category_6/images/bgho_2024_l4_002.jpg.webp",
+    "image_alt": "Gaming Laptops"
+  }
+},
+{
+  "model": "catalog.subcategory",
+  "pk": 7,
+  "fields": {
+    "title": "Wireless",
+    "category": 4,
+    "image": "subcategories/category_7/images/126-45_lg.jpg",
+    "image_alt": "Wireless Headphones"
   }
 },
 {
@@ -82,19 +141,54 @@
   }
 },
 {
+  "model": "catalog.tag",
+  "pk": 6,
+  "fields": {
+    "name": "New"
+  }
+},
+{
+  "model": "catalog.tag",
+  "pk": 7,
+  "fields": {
+    "name": "Popular"
+  }
+},
+{
+  "model": "catalog.tag",
+  "pk": 8,
+  "fields": {
+    "name": "Sale"
+  }
+},
+{
+  "model": "catalog.tag",
+  "pk": 9,
+  "fields": {
+    "name": "Summer"
+  }
+},
+{
+  "model": "catalog.tag",
+  "pk": 10,
+  "fields": {
+    "name": "Gaming"
+  }
+},
+{
   "model": "catalog.product",
   "pk": 1,
   "fields": {
     "subcategory": 1,
-    "title": "Thermal underwear",
-    "description": "Men's Thermal T-Shirt is a tight, skin-friendly garment, comfortable to wear.",
-    "full_description": "Men's Thermal Underwear uses high-quality insulating materials that can effectively store body temperature, prevent heat loss and provide excellent insulation for the wearer.",
+    "title": "Thermal Underwear Set",
+    "description": "Men's thermal underwear set, skin-friendly and warm.",
+    "full_description": "Men's Thermal Underwear uses high-quality insulating materials that can effectively store body temperature, prevent heat loss and provide excellent insulation for the wearer. Perfect for winter sports and outdoor activities.",
     "price": "109.00",
     "count": 15,
     "date": "2026-02-04T16:30:16.201Z",
     "free_delivery": true,
     "available": true,
-    "rating": 0.0,
+    "rating": 4.5,
     "tags": [
       1,
       2,
@@ -108,17 +202,18 @@
   "fields": {
     "subcategory": 2,
     "title": "iPhone 17 Pro Max",
-    "description": "iPhone 17 Pro Max is fast, stable, has excellent battery life with iOS 26.1 beta, and works wonderfully with VoiceOver.",
-    "full_description": "Dynamic Island.\r\nAlways-On display.\r\nProMotion technology with adaptive refresh rates up to 120Hz.\r\nHDR display.\r\nTrue Tone.\r\nWide colour (P3)\r\nHaptic Touch.\r\n20,00,000:1 contrast ratio (typical)",
+    "description": "iPhone 17 Pro Max — fast, stable, excellent battery life with iOS 26.",
+    "full_description": "Dynamic Island. Always-On display. ProMotion technology with adaptive refresh rates up to 120Hz. HDR display. True Tone. Wide colour (P3). Haptic Touch. 2,000,000:1 contrast ratio. A19 Pro chip with 6-core CPU and 6-core GPU. 48MP Fusion camera.",
     "price": "1469.00",
     "count": 9,
     "date": "2026-02-04T16:38:08.299Z",
     "free_delivery": true,
     "available": true,
-    "rating": 0.0,
+    "rating": 4.8,
     "tags": [
       2,
-      4
+      4,
+      6
     ]
   }
 },
@@ -127,16 +222,416 @@
   "pk": 3,
   "fields": {
     "subcategory": 1,
-    "title": "Boxers for men",
-    "description": "From boxers to briefs, men's underwear is a uniquely personal choice and our collection caters to every preference.",
-    "full_description": "From boxers to briefs, men's underwear is a uniquely personal choice and our collection caters to every preference. From boxers to briefs, men's underwear is a uniquely personal choice and our collection caters to every preference.",
+    "title": "Boxers for Men 3-Pack",
+    "description": "Comfortable men's boxers, breathable cotton blend.",
+    "full_description": "From boxers to briefs, men's underwear is a uniquely personal choice and our collection caters to every preference. Made from premium cotton blend for all-day comfort. Available in multiple colours and sizes.",
     "price": "45.00",
     "count": 36,
     "date": "2026-02-04T16:43:46.290Z",
     "free_delivery": false,
     "available": true,
-    "rating": 0.0,
+    "rating": 4.1,
     "tags": [
+      5
+    ]
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 4,
+  "fields": {
+    "subcategory": 3,
+    "title": "MacBook Air M3",
+    "description": "Thin, light, and insanely powerful with M3 chip.",
+    "full_description": "MacBook Air with M3 chip features up to 18-hour battery life, a stunning 13.6-inch Liquid Retina display, 8GB unified memory, 256GB SSD, and the power of Apple Silicon. Perfect for work, creativity, and everyday tasks.",
+    "price": "1299.00",
+    "count": 12,
+    "date": "2026-02-10T10:00:00Z",
+    "free_delivery": true,
+    "available": true,
+    "rating": 4.9,
+    "tags": [
+      4,
+      6,
+      7
+    ]
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 5,
+  "fields": {
+    "subcategory": 4,
+    "title": "Classic White T-Shirt",
+    "description": "Essential everyday white t-shirt, 100% cotton.",
+    "full_description": "Our classic white t-shirt is made from 100% ring-spun cotton for ultimate softness. Features a relaxed fit, reinforced stitching, and pre-shrunk fabric. A wardrobe staple for any occasion.",
+    "price": "19.99",
+    "count": 100,
+    "date": "2026-02-12T09:00:00Z",
+    "free_delivery": false,
+    "available": true,
+    "rating": 4.2,
+    "tags": [
+      9,
+      5
+    ]
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 6,
+  "fields": {
+    "subcategory": 5,
+    "title": "Samsung Galaxy S25 Ultra",
+    "description": "Samsung's flagship Android smartphone with built-in S Pen.",
+    "full_description": "Galaxy S25 Ultra features a 6.9-inch Dynamic AMOLED display, Snapdragon 8 Elite processor, 200MP quad-camera system, built-in S Pen, and 5000mAh battery. Experience the ultimate Android flagship.",
+    "price": "1199.00",
+    "count": 7,
+    "date": "2026-02-15T11:00:00Z",
+    "free_delivery": true,
+    "available": true,
+    "rating": 4.7,
+    "tags": [
+      4,
+      6,
+      7
+    ]
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 7,
+  "fields": {
+    "subcategory": 6,
+    "title": "ASUS ROG Strix G16",
+    "description": "Gaming laptop with RTX 4070 and 165Hz display.",
+    "full_description": "ASUS ROG Strix G16 is powered by Intel Core i9-14900HX and NVIDIA GeForce RTX 4070. Features a 16-inch QHD 165Hz IPS display, 32GB DDR5 RAM, 1TB NVMe SSD, and ROG Intelligent Cooling system for extreme gaming sessions.",
+    "price": "1799.00",
+    "count": 5,
+    "date": "2026-02-16T12:00:00Z",
+    "free_delivery": true,
+    "available": true,
+    "rating": 4.6,
+    "tags": [
+      2,
+      10
+    ]
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 8,
+  "fields": {
+    "subcategory": 7,
+    "title": "Sony WH-1000XM5",
+    "description": "Industry-leading noise cancelling wireless headphones.",
+    "full_description": "Sony WH-1000XM5 headphones feature industry-leading noise cancellation with two chips and eight microphones. Up to 30-hour battery life, multipoint connection, Speak-to-Chat technology, and premium sound quality with LDAC codec support.",
+    "price": "349.00",
+    "count": 20,
+    "date": "2026-02-17T13:00:00Z",
+    "free_delivery": true,
+    "available": true,
+    "rating": 4.8,
+    "tags": [
+      4,
+      7
+    ]
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 9,
+  "fields": {
+    "subcategory": 2,
+    "title": "iPhone 16",
+    "description": "Apple iPhone 16 with A18 chip and improved cameras.",
+    "full_description": "iPhone 16 features the powerful A18 chip, an advanced 48MP camera system with 2x optical zoom, Action button, USB-C connectivity, and up to 22 hours of video playback. Available in five stunning colours.",
+    "price": "799.00",
+    "count": 18,
+    "date": "2026-02-18T09:00:00Z",
+    "free_delivery": true,
+    "available": true,
+    "rating": 4.6,
+    "tags": [
+      6,
+      7
+    ]
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 10,
+  "fields": {
+    "subcategory": 4,
+    "title": "Sports Performance T-Shirt",
+    "description": "Moisture-wicking sport t-shirt for active lifestyle.",
+    "full_description": "Engineered for peak performance, this sport t-shirt features advanced moisture-wicking technology, anti-odor treatment, and 4-way stretch fabric. Lightweight and breathable, ideal for gym, running, and outdoor training.",
+    "price": "34.99",
+    "count": 60,
+    "date": "2026-02-19T10:00:00Z",
+    "free_delivery": false,
+    "available": true,
+    "rating": 4.3,
+    "tags": [
+      1,
+      5,
+      9
+    ]
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 11,
+  "fields": {
+    "subcategory": 3,
+    "title": "MacBook Pro 16 M3 Pro",
+    "description": "Pro-level performance for professionals and creatives.",
+    "full_description": "MacBook Pro 16 with M3 Pro chip delivers exceptional performance for demanding workflows. Features a 16.2-inch Liquid Retina XDR display, up to 22 hours battery life, 18GB unified memory, and advanced thermal management for sustained performance.",
+    "price": "2499.00",
+    "count": 6,
+    "date": "2026-02-20T11:00:00Z",
+    "free_delivery": true,
+    "available": true,
+    "rating": 4.9,
+    "tags": [
+      2,
+      7
+    ]
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 12,
+  "fields": {
+    "subcategory": 5,
+    "title": "Google Pixel 9 Pro",
+    "description": "Google's flagship with the best Android camera.",
+    "full_description": "Google Pixel 9 Pro features Google Tensor G4 chip, a 6.3-inch LTPO OLED display, triple camera system with 50MP main sensor, 7 years of OS and security updates, and exclusive AI features powered by Google Gemini.",
+    "price": "999.00",
+    "count": 11,
+    "date": "2026-02-21T12:00:00Z",
+    "free_delivery": true,
+    "available": true,
+    "rating": 4.5,
+    "tags": [
+      8,
+      6
+    ]
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 13,
+  "fields": {
+    "subcategory": 1,
+    "title": "Women's Thermal Set",
+    "description": "Soft women's thermal underwear for cold weather.",
+    "full_description": "Stay warm in style with our Women's Thermal Set. Made from a premium blend of merino wool and synthetic fibres, providing exceptional warmth without bulk. Features flatlock seams to prevent chafing during active use.",
+    "price": "89.00",
+    "count": 25,
+    "date": "2026-02-22T09:00:00Z",
+    "free_delivery": true,
+    "available": true,
+    "rating": 4.4,
+    "tags": [
+      8,
+      3
+    ]
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 14,
+  "fields": {
+    "subcategory": 6,
+    "title": "Lenovo Legion Pro 7i",
+    "description": "High-performance gaming laptop with RTX 4080.",
+    "full_description": "Lenovo Legion Pro 7i features Intel Core i9-14900HX, NVIDIA GeForce RTX 4080, 32GB DDR5 RAM, 1TB PCIe 4.0 SSD, and a stunning 16-inch IPS display at 240Hz. Engineered for elite gamers who demand the best.",
+    "price": "2199.00",
+    "count": 4,
+    "date": "2026-02-23T10:00:00Z",
+    "free_delivery": true,
+    "available": true,
+    "rating": 4.7,
+    "tags": [
+      2,
+      10
+    ]
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 15,
+  "fields": {
+    "subcategory": 7,
+    "title": "Apple AirPods Pro 2",
+    "description": "Active noise cancellation earbuds with Transparency mode.",
+    "full_description": "AirPods Pro 2 deliver up to 2x more Active Noise Cancellation, Transparency mode, Adaptive Audio, and Personalised Spatial Audio. Features H2 chip, up to 6 hours of listening time (30 hours with case), and USB-C charging case.",
+    "price": "249.00",
+    "count": 30,
+    "date": "2026-02-24T11:00:00Z",
+    "free_delivery": true,
+    "available": true,
+    "rating": 4.7,
+    "tags": [
+      4,
+      7
+    ]
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 16,
+  "fields": {
+    "subcategory": 4,
+    "title": "Graphic Print T-Shirt",
+    "description": "Trendy graphic t-shirt with exclusive artwork print.",
+    "full_description": "Express yourself with our Graphic Print T-Shirt. Features exclusive artwork printed with eco-friendly water-based inks on 180gsm cotton fabric. Available in a range of designs and colours, this tee pairs well with jeans or shorts.",
+    "price": "29.99",
+    "count": 45,
+    "date": "2026-02-25T09:00:00Z",
+    "free_delivery": false,
+    "available": true,
+    "rating": 4.0,
+    "tags": [
+      9
+    ]
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 17,
+  "fields": {
+    "subcategory": 2,
+    "title": "iPhone SE 3rd Gen",
+    "description": "Affordable iPhone with A15 Bionic and compact design.",
+    "full_description": "iPhone SE 3rd generation features the powerful A15 Bionic chip in the classic 4.7-inch form factor. With 5G capability, Touch ID, and a 12MP camera, it delivers flagship performance at an accessible price point.",
+    "price": "429.00",
+    "count": 22,
+    "date": "2026-02-26T10:00:00Z",
+    "free_delivery": false,
+    "available": true,
+    "rating": 4.2,
+    "tags": [
+      8
+    ]
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 18,
+  "fields": {
+    "subcategory": 5,
+    "title": "OnePlus 12",
+    "description": "Flagship killer with Hasselblad cameras and fast charging.",
+    "full_description": "OnePlus 12 is powered by Snapdragon 8 Gen 3, features a stunning 6.82-inch LTPO AMOLED display at 120Hz, Hasselblad-tuned 50MP triple camera system, and 100W SUPERVOOC fast charging. Charges from 0 to 100% in just 26 minutes.",
+    "price": "799.00",
+    "count": 13,
+    "date": "2026-02-27T11:00:00Z",
+    "free_delivery": true,
+    "available": true,
+    "rating": 4.5,
+    "tags": [
+      8,
+      6
+    ]
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 19,
+  "fields": {
+    "subcategory": 3,
+    "title": "Dell XPS 15",
+    "description": "Premium Windows laptop with OLED display.",
+    "full_description": "Dell XPS 15 features a stunning 15.6-inch OLED touch display, Intel Core i7-13700H, NVIDIA GeForce RTX 4060, 32GB DDR5 RAM, 512GB NVMe SSD, and a premium CNC aluminum chassis. The perfect companion for creative professionals.",
+    "price": "1799.00",
+    "count": 8,
+    "date": "2026-03-01T09:00:00Z",
+    "free_delivery": true,
+    "available": true,
+    "rating": 4.6,
+    "tags": [
+      7
+    ]
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 20,
+  "fields": {
+    "subcategory": 7,
+    "title": "Bose QuietComfort 45",
+    "description": "Premium over-ear noise cancelling headphones.",
+    "full_description": "Bose QuietComfort 45 headphones offer world-class noise cancellation and balanced sound performance. With up to 24 hours of battery life, a comfortable lightweight design, and a multipoint connection for switching between two devices seamlessly.",
+    "price": "279.00",
+    "count": 17,
+    "date": "2026-03-02T10:00:00Z",
+    "free_delivery": true,
+    "available": true,
+    "rating": 4.6,
+    "tags": [
+      8,
+      7
+    ]
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 21,
+  "fields": {
+    "subcategory": 6,
+    "title": "MSI Raider GE78 HX",
+    "description": "Ultra-powerful gaming laptop with i9 and RTX 4090.",
+    "full_description": "MSI Raider GE78 HX is the pinnacle of gaming laptops. Equipped with Intel Core i9-14900HX and NVIDIA GeForce RTX 4090, 64GB DDR5 RAM, dual 2TB NVMe SSD in RAID 0, and a 17.3-inch QHD Mini LED display at 240Hz. Dominate every game.",
+    "price": "3499.00",
+    "count": 3,
+    "date": "2026-03-03T11:00:00Z",
+    "free_delivery": true,
+    "available": true,
+    "rating": 4.8,
+    "tags": [
+      2,
+      10
+    ]
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 22,
+  "fields": {
+    "subcategory": 4,
+    "title": "Linen Summer T-Shirt",
+    "description": "Lightweight linen t-shirt perfect for hot weather.",
+    "full_description": "Our Linen Summer T-Shirt is crafted from 100% premium linen, offering exceptional breathability and a natural texture. The relaxed fit and moisture-absorbing properties make it ideal for beach days, holidays, and warm summer evenings.",
+    "price": "39.99",
+    "count": 55,
+    "date": "2026-03-04T09:00:00Z",
+    "free_delivery": false,
+    "available": true,
+    "rating": 4.3,
+    "tags": [
+      8,
+      9
+    ]
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 23,
+  "fields": {
+    "subcategory": 1,
+    "title": "Compression Shorts",
+    "description": "High-performance compression shorts for athletes.",
+    "full_description": "Our Compression Shorts provide targeted muscle support and improved circulation during intense workouts. Made from a 4-way stretch nylon-spandex blend with flat seam construction to prevent irritation. Includes moisture-wicking and quick-dry technology.",
+    "price": "49.99",
+    "count": 40,
+    "date": "2026-03-05T10:00:00Z",
+    "free_delivery": false,
+    "available": true,
+    "rating": 4.4,
+    "tags": [
+      1,
       5
     ]
   }
@@ -156,7 +651,7 @@
   "fields": {
     "product": 2,
     "image": "products/product_2/images/IMG-18065550_m_jpeg_1_c35e6d4d-ca83-45ac-b0d7-246b28ff97a7.jpg.webp",
-    "alt": "orange"
+    "alt": "iPhone 17 Pro Max orange"
   }
 },
 {
@@ -165,7 +660,7 @@
   "fields": {
     "product": 2,
     "image": "products/product_2/images/IMG-18065572_m_jpeg_1_b346e1f8-dc92-4d1a-aa96-3aa6be0cfc5e.jpg.webp",
-    "alt": "grey"
+    "alt": "iPhone 17 Pro Max grey"
   }
 },
 {
@@ -174,7 +669,358 @@
   "fields": {
     "product": 3,
     "image": "products/product_3/images/571a137018514a488e04bc9ffe924b36.jpg.webp",
-    "alt": "boxers"
+    "alt": "Boxers front view"
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 5,
+  "fields": {
+    "product": 4,
+    "image": "products/product_4/images/IMG_2758.JPG",
+    "alt": "MacBook Air M3 silver"
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 6,
+  "fields": {
+    "product": 5,
+    "image": "products/product_5/images/7MR01237-WHT_1.jpg.webp",
+    "alt": "Classic white t-shirt"
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 7,
+  "fields": {
+    "product": 6,
+    "image": "products/product_6/images/LD0006206303.jpg",
+    "alt": "Samsung Galaxy S25 Ultra Grey"
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 8,
+  "fields": {
+    "product": 7,
+    "image": "products/product_7/images/71kOH3in8TL._AC_UF8941000_QL80_.jpg",
+    "alt": "ASUS ROG Strix G16"
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 9,
+  "fields": {
+    "product": 8,
+    "image": "products/product_8/images/producto-47248-61.jpg",
+    "alt": "Sony WH-1000XM5 black"
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 10,
+  "fields": {
+    "product": 9,
+    "image": "products/product_9/images/iphone-16-color-azul-ultramar-128-gb.jpg",
+    "alt": "iPhone 16 azul"
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 11,
+  "fields": {
+    "product": 10,
+    "image": "products/product_10/images/3_c078254c-ee76-447e-b931-0443c4f6a0c3_1500x.jpg.webp",
+    "alt": "Sport t-shirt black"
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 12,
+  "fields": {
+    "product": 11,
+    "image": "products/product_11/images/apple-macbook-pro-16-m3-pro-12cpu-18gpu-18gb-512gb-ssd.webp",
+    "alt": "MacBook Pro 16 space black"
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 13,
+  "fields": {
+    "product": 12,
+    "image": "products/product_12/images/ee519bdff2ecd1fe87159692a0e50cb0254e5197_frontcover_elec_4P6JdwG.jpg.webp",
+    "alt": "Google Pixel 9 Pro"
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 14,
+  "fields": {
+    "product": 13,
+    "image": "products/product_13/images/images-6.jpeg",
+    "alt": "Women's thermal set white front"
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 15,
+  "fields": {
+    "product": 14,
+    "image": "products/product_14/images/q6fb2891avf5ok5et6ppuhuuilu0cq939626.png.webp",
+    "alt": "Lenovo Legion Pro 7i"
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 16,
+  "fields": {
+    "product": 15,
+    "image": "products/product_15/images/610jC6Z6yUL._AC_UF10001000_QL80_.jpg",
+    "alt": "AirPods Pro 2 white"
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 17,
+  "fields": {
+    "product": 16,
+    "image": "products/product_16/images/1799035371_max.jpg",
+    "alt": "Graphic tee front"
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 18,
+  "fields": {
+    "product": 17,
+    "image": "products/product_17/images/images-9.jpeg",
+    "alt": "iPhone SE 3 midnight"
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 19,
+  "fields": {
+    "product": 18,
+    "image": "products/product_18/images/b96848b7acd10dafde32203d12f6fea7.png",
+    "alt": "OnePlus 12 silky black"
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 20,
+  "fields": {
+    "product": 19,
+    "image": "products/product_19/images/notebook-xps-15-9530-t-black-gallery-1.psd.avif",
+    "alt": "Dell XPS 15 platinum"
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 21,
+  "fields": {
+    "product": 20,
+    "image": "products/product_20/images/515b2YziSkL._AC_UF10001000_QL80_.jpg",
+    "alt": "Bose QuietComfort 45 white"
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 22,
+  "fields": {
+    "product": 21,
+    "image": "products/product_21/images/images-12.jpeg",
+    "alt": "MSI Raider GE78 HX"
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 23,
+  "fields": {
+    "product": 22,
+    "image": "products/product_22/images/beige-linen-jersey-t-shirt.jpg",
+    "alt": "Linen summer shirt beige"
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 24,
+  "fields": {
+    "product": 23,
+    "image": "products/product_23/images/hlh090125digcompressionshorts-underarmour-005-68a35f20e41ed.jpg.avif",
+    "alt": "Compression shorts black front"
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 25,
+  "fields": {
+    "product": 1,
+    "image": "products/product_1/images/images.jpeg",
+    "alt": "Thermal underwear back view"
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 26,
+  "fields": {
+    "product": 6,
+    "image": "products/product_6/images/Color-Selection_Titanium-Silverblue_PC.png.webp",
+    "alt": "Samsung Galaxy S25 Ultra"
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 27,
+  "fields": {
+    "product": 7,
+    "image": "products/product_7/images/rog-strix-g-16.png",
+    "alt": "ASUS ROG Strix G16 back"
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 28,
+  "fields": {
+    "product": 8,
+    "image": "products/product_8/images/b4476ca635d3baa551e19ade7fad2c58.avif",
+    "alt": "Sony WH-1000XM5 Grey"
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 29,
+  "fields": {
+    "product": 9,
+    "image": "products/product_9/images/61GLqbh-cL._AC_UF10001000_QL80_.jpg",
+    "alt": "iPhone 16 green"
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 30,
+  "fields": {
+    "product": 11,
+    "image": "products/product_11/images/IMG_1256.JPG",
+    "alt": ""
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 31,
+  "fields": {
+    "product": 12,
+    "image": "products/product_12/images/images-4.jpeg",
+    "alt": "Google Pixel 9 Pro obsidian"
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 32,
+  "fields": {
+    "product": 13,
+    "image": "products/product_13/images/images-5.jpeg",
+    "alt": "Women's thermal set white side"
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 33,
+  "fields": {
+    "product": 13,
+    "image": "products/product_13/images/images-7.jpeg",
+    "alt": "Women's thermal set white"
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 34,
+  "fields": {
+    "product": 14,
+    "image": "products/product_14/images/Legion-Pro-7i-Gaming-Laptop-CES-2025-png-q82-w-h1600.webp",
+    "alt": ""
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 35,
+  "fields": {
+    "product": 15,
+    "image": "products/product_15/images/LD0006066685.jpg",
+    "alt": "Apple AirPods Pro 2"
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 36,
+  "fields": {
+    "product": 15,
+    "image": "products/product_15/images/images-8.jpeg",
+    "alt": "Apple AirPods Pro 2"
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 37,
+  "fields": {
+    "product": 17,
+    "image": "products/product_17/images/61A0Zu4K-TL.jpg",
+    "alt": "iPhone SE 3rd Gen red"
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 38,
+  "fields": {
+    "product": 18,
+    "image": "products/product_18/images/ASSET_MP_139218715.jpeg",
+    "alt": "OnePlus 12"
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 39,
+  "fields": {
+    "product": 19,
+    "image": "products/product_19/images/xps_15_9510.jpg",
+    "alt": ""
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 40,
+  "fields": {
+    "product": 20,
+    "image": "products/product_20/images/images-10.jpeg",
+    "alt": "Bose QuietComfort 45 blue"
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 41,
+  "fields": {
+    "product": 20,
+    "image": "products/product_20/images/images-11.jpeg",
+    "alt": "Bose QuietComfort 45 black"
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 42,
+  "fields": {
+    "product": 21,
+    "image": "products/product_21/images/images-13.jpeg",
+    "alt": ""
+  }
+},
+{
+  "model": "catalog.productimage",
+  "pk": 43,
+  "fields": {
+    "product": 23,
+    "image": "products/product_23/images/42810903_o_a1.webp",
+    "alt": "Compression Shorts back"
   }
 },
 {
@@ -199,9 +1045,9 @@
   "model": "catalog.productspecification",
   "pk": 3,
   "fields": {
-    "product": 2,
-    "name": "Color",
-    "value": "orange, grey"
+    "product": 1,
+    "name": "Material",
+    "value": "Polyester 80%, Elastane 20%"
   }
 },
 {
@@ -209,26 +1055,593 @@
   "pk": 4,
   "fields": {
     "product": 2,
-    "name": "Size",
-    "value": "512 GB"
+    "name": "Color",
+    "value": "Desert Titanium, Black Titanium"
   }
 },
 {
   "model": "catalog.productspecification",
   "pk": 5,
   "fields": {
-    "product": 3,
-    "name": "color",
-    "value": "blue"
+    "product": 2,
+    "name": "Storage",
+    "value": "256GB / 512GB / 1TB"
   }
 },
 {
   "model": "catalog.productspecification",
   "pk": 6,
   "fields": {
+    "product": 2,
+    "name": "RAM",
+    "value": "8GB"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 7,
+  "fields": {
     "product": 3,
-    "name": "size",
-    "value": "M/L"
+    "name": "Color",
+    "value": "Blue"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 8,
+  "fields": {
+    "product": 3,
+    "name": "Size",
+    "value": "M/L/XL"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 9,
+  "fields": {
+    "product": 3,
+    "name": "Material",
+    "value": "Cotton 95%, Elastane 5%"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 10,
+  "fields": {
+    "product": 4,
+    "name": "Chip",
+    "value": "Apple M3"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 11,
+  "fields": {
+    "product": 4,
+    "name": "RAM",
+    "value": "8GB Unified Memory"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 12,
+  "fields": {
+    "product": 4,
+    "name": "Storage",
+    "value": "256GB SSD"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 13,
+  "fields": {
+    "product": 4,
+    "name": "Display",
+    "value": "13.6-inch Liquid Retina"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 14,
+  "fields": {
+    "product": 5,
+    "name": "Material",
+    "value": "100% Cotton"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 15,
+  "fields": {
+    "product": 5,
+    "name": "Size",
+    "value": "XS/S/M/L/XL/XXL"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 16,
+  "fields": {
+    "product": 6,
+    "name": "Chip",
+    "value": "Snapdragon 8 Elite"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 17,
+  "fields": {
+    "product": 6,
+    "name": "RAM",
+    "value": "12GB"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 18,
+  "fields": {
+    "product": 6,
+    "name": "Storage",
+    "value": "256GB / 512GB"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 19,
+  "fields": {
+    "product": 6,
+    "name": "Camera",
+    "value": "200MP + 50MP + 10MP"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 20,
+  "fields": {
+    "product": 7,
+    "name": "CPU",
+    "value": "Intel Core i9-14900HX"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 21,
+  "fields": {
+    "product": 7,
+    "name": "GPU",
+    "value": "NVIDIA RTX 4070 8GB"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 22,
+  "fields": {
+    "product": 7,
+    "name": "RAM",
+    "value": "32GB DDR5"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 23,
+  "fields": {
+    "product": 7,
+    "name": "Display",
+    "value": "16-inch QHD 165Hz"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 24,
+  "fields": {
+    "product": 8,
+    "name": "Frequency Response",
+    "value": "4Hz–40,000Hz"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 25,
+  "fields": {
+    "product": 8,
+    "name": "Battery Life",
+    "value": "30 hours"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 26,
+  "fields": {
+    "product": 8,
+    "name": "Connectivity",
+    "value": "Bluetooth 5.2"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 27,
+  "fields": {
+    "product": 9,
+    "name": "Chip",
+    "value": "Apple A18"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 28,
+  "fields": {
+    "product": 9,
+    "name": "Storage",
+    "value": "128GB / 256GB / 512GB"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 29,
+  "fields": {
+    "product": 9,
+    "name": "Display",
+    "value": "6.1-inch Super Retina XDR"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 30,
+  "fields": {
+    "product": 10,
+    "name": "Material",
+    "value": "88% Polyester, 12% Elastane"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 31,
+  "fields": {
+    "product": 10,
+    "name": "Size",
+    "value": "S/M/L/XL"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 32,
+  "fields": {
+    "product": 11,
+    "name": "Chip",
+    "value": "Apple M3 Pro"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 33,
+  "fields": {
+    "product": 11,
+    "name": "RAM",
+    "value": "18GB Unified Memory"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 34,
+  "fields": {
+    "product": 11,
+    "name": "Storage",
+    "value": "512GB SSD"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 35,
+  "fields": {
+    "product": 11,
+    "name": "Display",
+    "value": "16.2-inch Liquid Retina XDR"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 36,
+  "fields": {
+    "product": 12,
+    "name": "Chip",
+    "value": "Google Tensor G4"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 37,
+  "fields": {
+    "product": 12,
+    "name": "RAM",
+    "value": "16GB"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 38,
+  "fields": {
+    "product": 12,
+    "name": "Storage",
+    "value": "128GB / 256GB / 1TB"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 39,
+  "fields": {
+    "product": 13,
+    "name": "Size",
+    "value": "XS/S/M/L"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 40,
+  "fields": {
+    "product": 13,
+    "name": "Material",
+    "value": "Merino Wool 50%, Polyester 50%"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 41,
+  "fields": {
+    "product": 14,
+    "name": "CPU",
+    "value": "Intel Core i9-14900HX"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 42,
+  "fields": {
+    "product": 14,
+    "name": "GPU",
+    "value": "NVIDIA RTX 4080 12GB"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 43,
+  "fields": {
+    "product": 14,
+    "name": "RAM",
+    "value": "32GB DDR5"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 44,
+  "fields": {
+    "product": 14,
+    "name": "Display",
+    "value": "16-inch IPS 240Hz"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 45,
+  "fields": {
+    "product": 15,
+    "name": "Chip",
+    "value": "Apple H2"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 46,
+  "fields": {
+    "product": 15,
+    "name": "Battery Life",
+    "value": "6h + 24h (case)"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 47,
+  "fields": {
+    "product": 15,
+    "name": "Connectivity",
+    "value": "Bluetooth 5.3"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 48,
+  "fields": {
+    "product": 16,
+    "name": "Material",
+    "value": "100% Cotton 180gsm"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 49,
+  "fields": {
+    "product": 16,
+    "name": "Size",
+    "value": "XS/S/M/L/XL"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 50,
+  "fields": {
+    "product": 17,
+    "name": "Chip",
+    "value": "Apple A15 Bionic"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 51,
+  "fields": {
+    "product": 17,
+    "name": "Storage",
+    "value": "64GB / 128GB / 256GB"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 52,
+  "fields": {
+    "product": 17,
+    "name": "Display",
+    "value": "4.7-inch Retina HD"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 53,
+  "fields": {
+    "product": 18,
+    "name": "Chip",
+    "value": "Snapdragon 8 Gen 3"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 54,
+  "fields": {
+    "product": 18,
+    "name": "RAM",
+    "value": "12GB / 16GB"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 55,
+  "fields": {
+    "product": 18,
+    "name": "Charging",
+    "value": "100W SUPERVOOC"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 56,
+  "fields": {
+    "product": 19,
+    "name": "CPU",
+    "value": "Intel Core i7-13700H"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 57,
+  "fields": {
+    "product": 19,
+    "name": "GPU",
+    "value": "NVIDIA RTX 4060 8GB"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 58,
+  "fields": {
+    "product": 19,
+    "name": "Display",
+    "value": "15.6-inch OLED 3.5K Touch"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 59,
+  "fields": {
+    "product": 20,
+    "name": "Battery Life",
+    "value": "24 hours"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 60,
+  "fields": {
+    "product": 20,
+    "name": "Connectivity",
+    "value": "Bluetooth 5.1"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 61,
+  "fields": {
+    "product": 20,
+    "name": "Weight",
+    "value": "238g"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 62,
+  "fields": {
+    "product": 21,
+    "name": "CPU",
+    "value": "Intel Core i9-14900HX"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 63,
+  "fields": {
+    "product": 21,
+    "name": "GPU",
+    "value": "NVIDIA RTX 4090 16GB"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 64,
+  "fields": {
+    "product": 21,
+    "name": "RAM",
+    "value": "64GB DDR5"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 65,
+  "fields": {
+    "product": 21,
+    "name": "Display",
+    "value": "17.3-inch QHD Mini LED 240Hz"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 66,
+  "fields": {
+    "product": 22,
+    "name": "Material",
+    "value": "100% Linen"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 67,
+  "fields": {
+    "product": 22,
+    "name": "Size",
+    "value": "XS/S/M/L/XL/XXL"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 68,
+  "fields": {
+    "product": 23,
+    "name": "Material",
+    "value": "Nylon 78%, Spandex 22%"
+  }
+},
+{
+  "model": "catalog.productspecification",
+  "pk": 69,
+  "fields": {
+    "product": 23,
+    "name": "Size",
+    "value": "XS/S/M/L/XL"
   }
 },
 {
@@ -237,8 +1650,48 @@
   "fields": {
     "product": 1,
     "sale_price": "79.00",
-    "date_from": "2026-02-05",
-    "date_to": "2026-02-10"
+    "date_from": "2026-03-01",
+    "date_to": "2026-04-01"
+  }
+},
+{
+  "model": "catalog.sale",
+  "pk": 2,
+  "fields": {
+    "product": 3,
+    "sale_price": "32.00",
+    "date_from": "2026-03-05",
+    "date_to": "2026-04-05"
+  }
+},
+{
+  "model": "catalog.sale",
+  "pk": 3,
+  "fields": {
+    "product": 13,
+    "sale_price": "65.00",
+    "date_from": "2026-03-10",
+    "date_to": "2026-04-10"
+  }
+},
+{
+  "model": "catalog.sale",
+  "pk": 4,
+  "fields": {
+    "product": 17,
+    "sale_price": "349.00",
+    "date_from": "2026-03-15",
+    "date_to": "2026-04-15"
+  }
+},
+{
+  "model": "catalog.sale",
+  "pk": 5,
+  "fields": {
+    "product": 22,
+    "sale_price": "27.99",
+    "date_from": "2026-03-18",
+    "date_to": "2026-04-18"
   }
 }
 ]

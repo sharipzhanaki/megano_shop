@@ -8,7 +8,7 @@ from profile_user.models import Profile
 STANDARD_USERS = [
     {
         "username": "luna_mark",
-        "password": "Test12345!",
+        "password": "testpass123",
         "profile": {
             "full_name": "Mark Luna",
             "email": "luna_m@example.com",
@@ -17,7 +17,7 @@ STANDARD_USERS = [
     },
     {
         "username": "standard_user",
-        "password": "Test12345!",
+        "password": "testpass123",
         "profile": {
             "full_name": "Standard User",
             "email": "standard_user@example.com",
@@ -26,7 +26,7 @@ STANDARD_USERS = [
     },
     {
         "username": "buyer",
-        "password": "Test12345!",
+        "password": "testpass123",
         "profile": {
             "full_name": "Buyer User",
             "email": "buyer@example.com",
