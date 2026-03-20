@@ -1,10 +1,13 @@
 import datetime
+import logging
 
 from django.db.models import Sum, F
 from django.utils.timezone import now
 
 from .models import Basket, BasketItem, DeliverySettings, Order, OrderItem
 from catalog.models import Product, Sale
+
+logger = logging.getLogger(__name__)
 
 
 class DeliveryCalculator:
@@ -36,14 +39,17 @@ class BasketService:
         """Добавить товар в корзину пользователя. Возвращает (добавлено, ошибка)."""
         product = Product.objects.filter(id=pid, available=True).first()
         if not product:
+            logger.warning("Add to basket failed: product %s not found or unavailable", pid)
             return None, "Product not found"
         item, _ = BasketItem.objects.get_or_create(basket=basket, product_id=pid, defaults={"count": 0})
         can_add = max(0, int(product.count) - int(item.count))
         add = min(count, can_add)
         if add == 0:
+            logger.warning("Add to basket failed: not enough stock for product %s", pid)
             return None, "Not enough stock"
         item.count += add
         item.save(update_fields=["count"])
+        logger.debug("Added %d of product %s to basket %s", add, pid, basket.id)
         return add, None
 
     @staticmethod
@@ -83,6 +89,7 @@ class OrderService:
         Возвращает (order, ошибка)."""
         items = BasketItem.objects.filter(basket=basket).select_related("product")
         if not items.exists():
+            logger.warning("Order creation failed: basket is empty for user %s", user.username)
             return None, "Basket is empty"
         today = now().date()
         subtotal = 0
@@ -107,6 +114,7 @@ class OrderService:
         order.total_cost = subtotal
         order.save(update_fields=["total_cost"])
         items.delete()
+        logger.info("Order #%s created for user %s, total=%s", order.id, user.username, subtotal)
         return order, None
 
     @staticmethod
@@ -174,4 +182,5 @@ class PaymentService:
         ).update(available=False)
         order.status = "paid"
         order.save(update_fields=["status"])
+        logger.info("Order #%s payment processed successfully", order.id)
         return None

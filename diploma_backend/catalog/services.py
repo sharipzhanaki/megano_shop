@@ -1,8 +1,12 @@
+import logging
+
 from django.db.models import Count, Q, Value, IntegerField, Sum
 from django.db.models.functions import Coalesce
 from django.utils.timezone import now
 
 from .models import Product, Sale
+
+logger = logging.getLogger(__name__)
 
 
 SORT_FIELD_MAP = {
@@ -108,9 +112,12 @@ class ReviewService:
         from .serializers import ReviewSerializer
         product = Product.objects.filter(id=product_id).first()
         if not product:
+            logger.warning("Review creation failed: product %s not found", product_id)
             return None, "Product not found"
         serializer = ReviewSerializer(data=data)
         if not serializer.is_valid():
+            logger.warning("Review creation failed: invalid data for product %s: %s", product_id, serializer.errors)
             return None, serializer.errors
         review = serializer.save(product=product)
+        logger.info("Review created for product %s by %s", product_id, data.get("author"))
         return review, None
