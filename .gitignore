@@ -134,3 +134,9 @@ dmypy.json
 .idea/
 
 .DS_Store
+diploma-frontend/frontend/migrations/__pycache__/__init__.cpython-310.pyc
+
+# Django generated
+staticfiles/
+diploma_backend/uploads/
+diploma_backend/staticfiles/

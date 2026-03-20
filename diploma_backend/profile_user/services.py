@@ -1,9 +1,13 @@
+import logging
+
 from django.contrib.auth.models import User
 from django.contrib.auth.password_validation import validate_password
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
 
 from .models import Profile
+
+logger = logging.getLogger(__name__)
 
 
 class UserService:
@@ -12,28 +16,35 @@ class UserService:
         """Зарегистрировать пользователя и создать профиль.
         Возвращает (user, ошибка)."""
         if not all([name, username, password]):
+            logger.warning("Registration failed: missing fields for username=%s", username)
             return None, "All fields required"
         if User.objects.filter(username=username).exists():
+            logger.warning("Registration failed: username '%s' already taken", username)
             return None, "Username already taken"
         try:
             validate_password(password)
         except ValidationError:
+            logger.warning("Registration failed: weak password for username=%s", username)
             return None, "Password too weak"
         user = User.objects.create_user(first_name=name, username=username, password=password)
         Profile.objects.create(user=user)
+        logger.info("User registered: %s", username)
         return user, None
 
     @staticmethod
     def change_password(user: User, current: str, new: str):
         """Сменить пароль. Возвращает (успех, ошибка)."""
         if not user.check_password(current):
+            logger.warning("Password change failed: wrong current password for user %s", user.username)
             return False, "Wrong current password"
         try:
             validate_password(new)
         except ValidationError:
+            logger.warning("Password change failed: weak new password for user %s", user.username)
             return False, "Password too weak"
         user.set_password(new)
         user.save()
+        logger.info("Password changed for user %s", user.username)
         return True, None
 
 
